@@ -1,0 +1,610 @@
+<!-- Copyright University of Westminster, all rights reserved
+     Authors: Anne-Gaelle Colom, Wendy Purdy -->
+<!-- updated 27/8/2021 -->
+		  
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Lessons: Functions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+
+	<!-- for upload only -->
+	
+	<script src="../jquery-3.7.1.min.js"></script>
+	
+	<!--<script src="https://code.jquery.com/jquery-git.js"></script>-->
+	
+
+
+<!-- for upload only -->
+
+  	<link rel="stylesheet" href="../jquery-ui-1.12.0/jquery-ui.min.css">
+    <link href="../prism/prism.css" rel="stylesheet" />
+    <link href="../prism/prism-line-numbers.css" rel="stylesheet" />
+    <link href="../prism/prism-line-highlight.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../bootstrap-replacement.css">
+    <link rel="stylesheet" href="../glyphicons-replacement.css">
+
+<!-- Optional theme -->
+
+<!-- for upload only -->
+
+<link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap-theme.min.css">
+     <script src="../jquery-ui-1.12.0/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="style.css" /> 
+
+
+<style>
+	.tab-pane label {
+		font-weight: 400;
+		padding-top: 10px;
+		padding-bottom: -10px;
+	}
+	.sortableTab {
+		list-style: none;
+		
+		-webkit-padding-start: 0px;
+	}
+
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+  color: #108040,
+  border-left: 1px solid #108040;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+  padding-left: 18px;
+  font-weight: bold;
+  color: #108040;
+  background-color: transparent;
+  border-left: 2px solid #108040;
+}
+.back-to-top:hover,
+.bs-docs-theme-toggle:hover {
+  color: #563d7c;
+  text-decoration: none;
+}
+
+.dropdown-menu>.active>a, 
+.dropdown-menu>.active>a:focus, 
+.dropdown-menu>.active>a:hover {
+  background-image: none;
+  background-color: #108040;
+}
+
+.nav-tabs > li.active > a {
+font-weight: 500;
+}
+</style>
+</head>
+  <body>
+  
+  <!-- Fixed navbar -->
+      <nav class="navbar navbar-default navbar-fixed-top navbar-lesson" >
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><img src="../images/westminster-logo.png" alt="Logo Unversity of Westminster" width="65%"></a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown active">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lessons <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="ifelse.html">if else</a></li>
+                  <li><a href="for.html">for loop</a></li>
+                  <li><a href="while.html">while loop</a></li>
+                  <li><a href="dowhile.html">do while loop</a></li>
+                  <li><a href="switch.html">switch case</a></li>
+                  <li class="active lesson"><a href="functions.html">function calls</a></li>
+                  <li><a href="arrays.html">arrays</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Videos <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="../Videos/ifelse.html">if else</a></li>
+                  <li><a href="../Videos/for.html">for loop</a></li>
+                  <li><a href="../Videos/while.html">while loop</a></li>
+                  <li><a href="../Videos/dowhile.html">do while loop</a></li>
+                  <li><a href="../Videos/switch.html">switch case</a></li>
+                  <li><a href="../Videos/functions.html">function calls</a></li>
+                  <li><a href="../Videos/arrays.html">arrays</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Code Visualiser <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="../codeVisAlpha.html?example=ifelse">if else</a></li>
+                  <li><a href="../codeVisAlpha.html?example=for">for loop</a></li>
+                  <li><a href="../codeVisAlpha.html?example=while">while loop</a></li>
+                  <li><a href="../codeVisAlpha.html?example=dowhile1">do while loop</a></li>
+                  <li><a href="../codeVisAlpha.html?example=switch1">switch case</a></li>
+                  <li><a href="../codeVisAlpha.html?example=functions">function calls</a></li>
+                  <li><a href="../codeVisAlpha.html?example=arrays">arrays</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Array Visualiser <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="../arrayVisualiser.html">Creation</a></li>
+                  <li><a href="#"></a></li>
+                  <li><a href="#"></a></li>
+                  <li><a href="#">Push</a></li>
+                  <li><a href="#">Pop</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+			  <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+            <li><a href="../About/aboutAlpha.html">About this App</a></li>
+          </ul>
+			  </li></ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+  
+  <main class="container language-javascript">
+  <div class="col-md-9" role="main"><h1>Functions</h1>
+  <p>Note: This lesson covers defining functions in <strong>JavaScript</strong> and <strong>Python</strong>.</p>
+  
+  <h2 id="Definition" class="group">Definition</h2>
+  <p>A <code>function</code> is a block of reusable code designed to perform a particular task. The function is executed when it is "called".</p>	 
+  <h2 id="Syntax" class="group">Syntax</h2>
+  <h3 class="subgroup" id="functions">functions</h3>
+ 
+ <!--
+  <p>A simple <code> function </code> definition: 
+  <a href="../codeVisAlpha.html?example=????" target="_blank" rel="noopener">
+   <span class="glyphicon glyphicon-export" aria-hidden="true"></span></a> </p>
+  -->
+
+  <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#jsCode" aria-controls="javaScriptCode1" role="tab" data-toggle="tab">JavaScript</a></li>
+     <!--
+	 <li role="presentation"><a href="#javaCode" aria-controls="javaCode1" role="tab" data-toggle="tab">Java</a></li>
+	 -->
+	<li role="presentation"><a href="#pythonCode" aria-controls="pythonCode1" role="tab" data-toggle="tab">Python</a></li>
+  </ul>
+      
+      <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="jsCode">
+      <pre class="line-numbers"><code class="language-javascript">function function_name(parameter1, parameter2, ... parameterN) {
+	block;
+}</code></pre>
+	
+<div class="alert alert-info" role="alert"><strong>
+<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+  JavaScript Note:</strong><ul><li> A JavaScript function is defined using the <code>function</code> keyword, 
+  followed by the function name, followed by parentheses (). The parentheses () may contain a list of parameters.
+  </li><li>
+  The code to be executed by the function is placed inside curly brackets.
+  </li></ul>
+  </div>  
+</div>
+
+<!-- java example required -->
+<!--
+      <div role="tabpanel" class="tab-pane" id="javaCode">
+      <pre class="line-numbers"><code class="language-java">
+	    
+</code></pre>
+</div>
+-->
+      <div role="tabpanel" class="tab-pane" id="pythonCode">
+	  
+	  <pre class="line-numbers"><code class="language-python">def function_name(parameter1, parameter2, ... parameterN):
+	block	</code></pre>
+	   <div class="alert alert-info" role="alert">
+      <strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+  Python Note: </strong> <ul><li> A Python function is defined using the <code>def</code> keyword, 
+  followed by the function name, followed by parentheses () ending with a colon. The parentheses () may contain a list of parameters.
+  </li><li> The code to be executed by the function is indented.
+  </li></ul>
+  </div>
+
+  </div>
+  
+     </div>	
+
+	<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+Note: </strong>The function will only perform an operation when the function is 'called'.
+</div>
+	  
+  <h2 class="group" id="Examples">Examples</h2>
+ 
+  <h3 class="subgroup" id="Example1">Example 1: Without Parameters</h3>
+
+<p>A function <code>message()</code> is defined. The parentheses () are empty as this function does 
+  not use parameters.  This means the function is not passed data to operate on. </p>
+
+<p>When the function is called, i.e., <code>message()</code>, it displays a simple message 'Hello'.</p>
+
+<p>This is a simple example. When you create functions you can optionally define:
+	  </p>
+	<ul>
+		<li>if the function should be passed data to operate on (Example 2: With Parameters);</li>
+		<li>if the function should return a value (Example 3: Returning Results).</li>
+	</ul>
+
+  <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#jsCode1" aria-controls="javaScriptCode1" role="tab" data-toggle="tab">JavaScript</a></li>
+     <!--
+	 <li role="presentation"><a href="#javaCode1" aria-controls="javaCode1" role="tab" data-toggle="tab">Java</a></li>
+	 -->
+	<li role="presentation"><a href="#pythonCode1" aria-controls="pythonCode1" role="tab" data-toggle="tab">Python</a></li>
+  </ul>
+      
+      <div class="tab-content">	  
+      <div role="tabpanel" class="tab-pane active" id="jsCode1">
+	  <ol>
+	  <li>Defining a function
+      <pre class="line-numbers"><code class="language-javascript">function message() {
+	alert("Hello");
+}</code></pre>
+</li>
+
+	  <li>Calling a function
+      <pre class="line-numbers"><code class="language-javascript">message();		// Hello</code></pre>
+	  </li>
+	  </ol>
+
+<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+  JavaScript Note:</strong> Use the <code>function</code> keyword, followed by the function 
+  name <code> message</code>, followed by parentheses (). The function code block is placed inside curly brackets.
+  This function uses an alert to display a simple message.
+  </div>  
+</div>
+
+<!-- java example required -->
+<!--
+      <div role="tabpanel" class="tab-pane" id="javaCode1">
+      <pre class="line-numbers"><code class="language-java">
+	    
+</code></pre>
+</div>
+-->
+      <div role="tabpanel" class="tab-pane" id="pythonCode1">
+
+	  <ol>
+	  <li>Defining a function 
+	  <pre class="line-numbers"><code class="language-python">def message():
+	print("Hello")</code></pre>
+	  </li>
+	  	  <li>Calling a function
+      <pre class="line-numbers"><code class="language-python">message()			# Hello</code></pre>
+	  </li>
+	  </ol>
+	   <div class="alert alert-info" role="alert">
+      <strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+  Python Note: </strong>  Use the <code>def</code> keyword, 
+  followed by the function name <code>message</code>, followed by parentheses () ending with a colon. 
+  The function code block is indented.
+  </div>
+  </div>
+     </div>	
+	   
+ <h3 class="subgroup" id="Example2">Example 2: With Parameters</h3>
+  <!-- start of example 2 -->
+<p>Here the function will be passed data to operate on. We define a function <code>greet</code> with a parameter named <code>message</code>.</p>
+<p>When the function is called, the function assigns the data  
+passed to it, i.e., <code>morning</code>, <code>afternoon</code> or <code>evening</code> to the parameter <code>message</code>.
+
+Note the difference between an argument and parameter.</p>
+<ul>
+	<li>Argument: A value passed to a function when the function is called. E.g., <code>greet("morning");</code>. </li>
+	<li>Parameter: the variable listed inside the parentheses in the function definition - 
+	used to refer to the value passed to it. E.g., <code>message</code>.</li>
+</ul>
+
+<p>Functions can be defined with a list of parameters by separating each parameter name with a comma.</p>
+    
+  
+  <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active">
+	  <a href="#jsCode2" aria-controls="javaScriptCode1" role="tab" data-toggle="tab">JavaScript</a>
+	  </li>
+   <!--
+   <li role="presentation"><a href="#javaCode2" aria-controls="javaCode1" role="tab" data-toggle="tab">Java</a></li>
+-->
+      <li role="presentation">
+	  <a href="#pythonCode2" aria-controls="pythonCode1" role="tab" data-toggle="tab">Python</a>
+	  </li>
+    </ul>  
+	  
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="jsCode2">
+  <ol>
+	  <li>Defining a function 
+  <pre class="line-numbers"><code class="language-javascript">function greet(message){
+	alert("Good " + message);
+}</code></pre>
+</li><li>Calling a function
+  <pre class="line-numbers"><code class="language-javascript">greet("morning"); 		// Good morning
+greet("afternoon");		// Good afternoon
+greet("evening");		// Good evening
+</code></pre>
+</li></ol>
+
+<!--
+	<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+		JavaScript Note: </strong> 
+    </div>
+-->
+ </div>
+ 
+ <!-- 
+ Java example required
+ 
+  <div role="tabpanel" class="tab-pane" id="javaCode2">     
+  <pre class="line-numbers"><code class="language-java">
+  
+  </code></pre>
+
+<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" 
+    aria-hidden="true"></span>    Java Notes:</strong> 
+		</div> 
+</div>  
+-->
+
+    <div role="tabpanel" class="tab-pane" id="pythonCode2">
+	  <ol>
+	  <li>Defining a function 
+	<pre class="line-numbers"><code class="language-python">def greet(message):
+	print("Good " + message)</code></pre>
+</li>
+<li>Calling a function
+<pre class="line-numbers"><code class="language-python">greet("morning")		# Good morning
+greet("afternoon")		# Good afternoon
+greet("evening")		# Good evening</code></pre>
+</li>
+</ol>
+
+<!--
+	<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+		Python Note: </strong>
+		</div> 
+-->				
+    </div>
+</div>
+
+  <h3 class="subgroup" id="Example3">Example 3: Returning Results </h3>
+  
+  <ul>
+  <li>To allow a function to return a value, use the <code>return</code> statement. 
+ </li><li>  The <code>return</code> statement immediately terminates a 
+  function execution and sends the return value back to the code that called the function. 
+  Therefore, line 3 will not run.
+  </li><li>We save the returned value in a variable <code>result</code>. 
+  Then we simply display the value returned and saved to <code>result</code>.</li>
+  </ul>
+
+  <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#jsCode4" aria-controls="javaScriptCode1" role="tab" data-toggle="tab">JavaScript</a></li>
+     <!--
+	 <li role="presentation"><a href="#javaCode4" aria-controls="javaCode1" role="tab" data-toggle="tab">Java</a></li>
+	  -->
+      <li role="presentation"><a href="#pythonCode4" aria-controls="pythonCode1" role="tab" data-toggle="tab">Python</a></li>
+  </ul>
+      
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="jsCode4">
+      <pre class="line-numbers"><code class="language-javascript">function square(x){
+	return x * x;
+	alert("this line will never be printed");
+}
+
+const result = square(10);
+alert(result);
+</code></pre>
+
+<!--
+  <div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+  JavaScript Note:</strong> 
+  </div>
+  -->
+  </div>
+
+<!--
+  <div role="tabpanel" class="tab-pane" id="javaCode4">
+      <pre class="line-numbers"><code class="language-java">
+
+</code></pre>
+ 	  	  
+      <div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+  Java Notes: </strong>
+      </div>
+	  
+  </div>	
+  -->
+  
+  <div role="tabpanel" class="tab-pane" id="pythonCode4">
+   <pre class="line-numbers"><code class="language-python">def square(x):
+	return x * x
+	print("this line will never be printed")
+
+result = square(10)
+print(result)
+</code></pre>
+<!--
+	  <div class="alert alert-info" role="alert">
+         <strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true">
+		 </span>
+		 Python Note: </strong> 
+		 </div>
+-->
+	  </div>
+</div>	   
+
+ <h3 class="subgroup" id="Example4">Example 4: Returning Ticket Price </h3>
+ 
+  <ul>
+  <li>Here is another example that returns results. We have taken the code used in 
+  the <code>if else</code>
+ lesson (Example 1: Ticket Price) and rewritten it to use a function.
+ </li><li> The function accepts a value for <code>age</code> and calculates and returns 
+ the appropriate <code>entry</code> message.
+  </li>
+  <li>The returned value is displayed.
+  </li>
+  <li>This code could be modified to accept the age value from keyboard input.
+  </li>
+  </ul>
+
+  <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#jsCode5" aria-controls="javaScriptCode1" role="tab" data-toggle="tab">JavaScript</a></li>
+     <!--
+	 <li role="presentation"><a href="#javaCode5" aria-controls="javaCode1" role="tab" data-toggle="tab">Java</a></li>
+	  -->
+      <li role="presentation"><a href="#pythonCode5" aria-controls="pythonCode1" role="tab" data-toggle="tab">Python</a></li>
+  </ul>
+      
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="jsCode5">
+      <pre class="line-numbers"><code class="language-javascript">function ticket(age){
+	let entry = "";
+ 	if ( age <= 12 ) {
+		entry = "Free";
+	} else if ( age <= 16 ) {
+		entry = "£10";
+	} else {
+		entry = "£20";
+	}
+	return entry;
+}
+
+alert(ticket(10));		// Free
+alert(ticket(14));		// £10
+alert(ticket(21));		// £20</code></pre>
+
+<!--
+  <div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+  JavaScript Note:</strong> 
+  </div>
+  -->
+  </div>
+
+<!--
+  <div role="tabpanel" class="tab-pane" id="javaCode5">
+      <pre class="line-numbers"><code class="language-java">
+
+</code></pre>
+ 	  	  
+      <div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+  Java Notes: </strong>
+      </div>
+	  
+  </div>	
+  -->
+  
+  <div role="tabpanel" class="tab-pane" id="pythonCode5">
+   <pre class="line-numbers"><code class="language-python">def ticket(age):
+	entry = ""
+	if age <= 12:
+		entry = "Free"
+	elif age <= 16:
+		entry = "£10"
+    else:
+		entry = "£20"
+	return entry
+
+print(ticket(10))       # Free
+print(ticket(14))       # £10
+print(ticket(21))       # £20</code></pre>
+
+<!--
+	  <div class="alert alert-info" role="alert">
+         <strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true">
+		 </span>
+		 Python Note: </strong> 
+		 </div>
+-->
+	  </div>
+</div>	   
+
+ </div> 
+
+
+  <div class="row">
+      <!--Nav Bar -->
+      
+      <nav class="col-md-3 bs-docs-sidebar hidden-print hidden-sm hidden-xs">
+          <ul id="sidebar" class="nav nav-stacked">
+              <li>
+                  <a href="#Definition">Definition</a>
+              </li>
+              <li>
+                  <a href="#Syntax">Syntax</a>
+				  <!--
+                  <ul class="nav nav-stacked">
+                      <li><a href="#functions">functions</a></li>
+                  </ul>
+				  -->
+              </li>
+              <li>
+                  <a href="#Examples">Examples</a>
+                  <ul class="nav nav-stacked">
+                      <li><a href="#Example1">Example 1</a></li>
+                      <li><a href="#Example2">Example 2</a></li> 
+					  <li><a href="#Example3">Example 3</a></li> 
+					  <li><a href="#Example4">Example 4</a></li> 
+                  </ul>
+              </li>
+          </ul>
+      </nav>
+  </div>
+           
+  </main>
+  <nav class="navbar navbar-default no-margin-bottom">
+  <div class="container">
+  <p class="navbar-text navbar-right">&copy; Copyright 2016-2026 <a href="https://www.westminster.ac.uk" class="navbar-link">University of Westminster</a></p><p class="navbar-text navbar-left"><a href="../About/accessibilityStatement.html">Accessibility Statement</a></p>
+  </div>
+  </nav>
+  
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="../bootstrap-replacement.js"></script>
+  <script src="../tabs-replacement.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+ 
+
+<!-- for uploading only -->
+
+ <script src="../prism/prism.js"></script>
+  <script src="../prism/prism-line-numbers.js"></script>
+  <script src="../prism/prism-line-highlight.js"></script>
+  <script src="lessons.js"></script>
+
+
+  <script>
+  $('body').scrollspy({
+    target: '.bs-docs-sidebar',
+    offset: 60
+  });
+  $("#sidebar").affix({
+    offset: {
+      top: 80
+    }
+  });
+  </script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+   
+    ga('create', 'UA-90995417-1', 'auto');
+    ga('send', 'pageview');
+   
+  </script>
+  </body>
+</html>

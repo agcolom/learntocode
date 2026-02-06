@@ -1,0 +1,522 @@
+<!-- Copyright University of Westminster, all rights reserved
+     Authors: Anne-Gaelle Colom, Wendy Purdy -->
+<!-- updated 22/8/19 -->
+		  
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Lessons: Do While</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="../jquery-3.7.1.min.js"></script>
+	<!--<script src="https://code.jquery.com/jquery-git.js"></script>-->
+
+  	<link rel="stylesheet" href="../jquery-ui-1.12.0/jquery-ui.min.css">
+  <link rel="stylesheet" href="../bootstrap-replacement.css">
+    <link href="../prism/prism.css" rel="stylesheet" />
+    <link href="../prism/prism-line-numbers.css" rel="stylesheet" />
+    <link href="../prism/prism-line-highlight.css" rel="stylesheet" />
+    
+
+<!-- Optional theme -->
+
+     <script src="../jquery-ui-1.12.0/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="style.css" /> 
+<style>
+	.tab-pane label {
+		font-weight: 400;
+		padding-top: 10px;
+		padding-bottom: -10px;
+	}
+	.sortableTab {
+		list-style: none;
+		
+		-webkit-padding-start: 0px;
+	}
+
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+  color: #108040,
+  border-left: 1px solid #108040;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+  padding-left: 18px;
+  font-weight: bold;
+  color: #108040;
+  background-color: transparent;
+  border-left: 2px solid #108040;
+}
+.back-to-top:hover,
+.bs-docs-theme-toggle:hover {
+  color: #563d7c;
+  text-decoration: none;
+}
+
+.dropdown-menu>.active>a, 
+.dropdown-menu>.active>a:focus, 
+.dropdown-menu>.active>a:hover {
+  background-image: none;
+  background-color: #108040;
+}
+
+.nav-tabs > li.active > a {
+font-weight: 500;
+}
+</style>
+</head>
+  <body>
+  
+  <!-- Fixed navbar -->
+      <nav class="navbar navbar-default navbar-fixed-top navbar-lesson" >
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><img src="../images/westminster-logo.png" width="65%"></a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown active">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lessons <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="ifelse.html">if else</a></li>
+                  <li><a href="for.html">for loop</a></li>
+                  <li><a href="while.html">while loop</a></li>
+                  <li class="active lesson"><a href="dowhile.html">do while loop</a></li>
+                  <li><a href="switch.html">switch case</a></li>
+                  <li><a href="functions.html">function calls</a></li>
+                  <li><a href="arrays.html">arrays</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Videos <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="../Videos/ifelse.html">if else</a></li>
+                  <li><a href="../Videos/for.html">for loop</a></li>
+                  <li><a href="../Videos/while.html">while loop</a></li>
+                  <li><a href="../Videos/dowhile.html">do while loop</a></li>
+                  <li><a href="../Videos/switch.html">switch case</a></li>
+                  <li><a href="../Videos/functions.html">function calls</a></li>
+                  <li><a href="../Videos/arrays.html">arrays</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Code Visualiser <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="../codeVisAlpha.php">if else</a></li>
+                  <li><a href="#">for loop</a></li>
+                  <li><a href="#">while loop</a></li>
+                  <li><a href="#">do while loop</a></li>
+                  <li><a href="#">switch case</a></li>
+                  <li><a href="#">function calls</a></li>
+                  <li><a href="#">arrays</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Array Visualiser <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="../arrayVisualiser.php">Creation</a></li>
+                  <li><a href="#"></a></li>
+                  <li><a href="#"></a></li>
+                  <li><a href="#">Push</a></li>
+                  <li><a href="#">Pop</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="../About/about.html">About this App</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </nav>
+  
+  <main class="container language-javascript">
+  <div class="col-md-9" role="main"><h1>do while</h1>
+  <h2 id="Definition" class="group">Definition</h2>
+  <p>The <code>do while</code> statement is used to create a loop.  
+  It is similar to the <code>while</code> loop except that the test condition is evaluated at the end of the loop.  
+  Therefore, a <code>do while</code> loop will always execute at least once.
+  </p>
+  <h2 id="Syntax" class="group">Syntax</h2>
+  <h3 class="subgroup" id="dowhile">do while</h3>
+  <p>A simple <code> do while</code> statement has the following syntax: 
+  <a href="../codeVisAlpha.php?example=dowhile1" target="_blank" rel="noopener">
+   <span class="glyphicon glyphicon-export" aria-hidden="true"></span></a> </p>
+      
+  <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#jsCode1" aria-controls="javaScriptCode1" role="tab" data-toggle="tab">JavaScript</a></li>
+      <li role="presentation"><a href="#javaCode1" aria-controls="javaCode1" role="tab" data-toggle="tab">Java</a></li>
+      <li role="presentation"><a href="#pythonCode1" aria-controls="pythonCode1" role="tab" data-toggle="tab">Python</a></li>
+    </ul>
+      
+      <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="jsCode1">
+      <pre class="line-numbers"><code class="language-javascript">do {
+    block;
+} while ( condition );
+</code></pre>
+</div>
+      <div role="tabpanel" class="tab-pane" id="javaCode1">
+      <pre class="line-numbers"><code class="language-java">do {
+    block;
+} while ( condition );
+</code></pre>
+</div>
+      <div role="tabpanel" class="tab-pane" id="pythonCode1">
+	   <div class="alert alert-info" role="alert">
+      <strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+  Python Note: </strong>The <code>do while</code> loop is not supported by Python.</div>
+  </div>
+     </div>	
+	  <p>JavaScript and Java syntax.</p>
+  <ul class="list">
+  <li>The <strong>condition</strong> is an expression that is evaluated at the end of each pass through the loop, and which evaluates to either <code>true</code> or <code>false</code>.</li> 
+  <li>The loop will stop executing when the condition becomes <code>false</code>.</li>
+  <li>The <strong>block</strong> is a block of code that gets executed <strong>at least once </strong>and then each time the <strong>condition</strong> evaluates to <code>true</code>.</li>
+  </ul>
+  <h2 class="group" id="Examples">Examples</h2>
+ 
+  <div class="alert alert-info" role="alert">
+  <strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true">
+  </span> Note:</strong> there are many possible solutions for the following examples. However, the solutions shown demonstrate using a <code>do while</code> loop.</div>
+ <h3 class="subgroup" id="Example1">Example 1: Quiz Question</h3>
+  <!-- start of example 1 -->
+  <p>For this example we will check if a user understands a concept. We can prompt the user for an answer at least once and keep prompting until the user 
+  enters the correct answer. The <code>do while</code> loop can be used to achieve this. </p>
+  
+ <!-- <p>JavaScript and Java example. </p> -->
+  <ol>
+  <li>The <code>do while</code> loop will ask the user to enter an answer (a, b or c) 
+  and check if the answer is correct (b). If the answer is not 
+  correct, the program loop will repeat and the user will be asked for an answer.<br><br> However, 
+  the code does not recognise an upper case character 'B' as correct. </li>
+  
+  <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#jsCode2" aria-controls="javaScriptCode1" role="tab" data-toggle="tab">JavaScript</a></li>
+      <li role="presentation"><a href="#javaCode2" aria-controls="javaCode1" role="tab" data-toggle="tab">Java</a></li>
+      <li role="presentation"><a href="#pythonCode2" aria-controls="pythonCode1" role="tab" data-toggle="tab">Python</a></li>
+    </ul>  
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="jsCode2">
+  <pre class="line-numbers"><code class="language-javascript">var answer; 
+do {
+    answer = prompt("Loops at least once:  a) while, b) do while, c) for","");
+} while ( answer != 'b' );     
+
+alert("Correct! The do while loops at least once.");</code></pre>
+	<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+		JavaScript Note: </strong> The users answer is entered in a string text field so we check against a string in the <code>do while</code> loop condition.
+    </div>
+
+ </div>
+  <div role="tabpanel" class="tab-pane" id="javaCode2">     
+  <pre class="line-numbers"><code class="language-java">Scanner input = new Scanner(System.in);
+  
+char answer;  
+do {
+    System.out.println("Loops at least once:  a) while, b) do while, c) for");
+    System.out.println("Enter a, b or c");
+    answer = input.next().charAt(0); 
+} while (answer != 'b');  
+
+System.out.println("Correct! The do while loops at least once.");  </code></pre>
+
+<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" 
+    aria-hidden="true"></span>    Java Notes:</strong> Remember to import the Scanner at the start of your Java program (not shown in this example - import java.util.Scanner). The Scanner allows us to create an object to enable keyboard input. Here, the object is named <strong>input</strong>:
+	<ul>
+	  <li>&nbsp; &nbsp;Scanner <strong>input</strong> = new Scanner(System.in);</li>
+	</ul>
+	
+	<p>The <strong>input</strong> object allows access to the next() method to get the next word in the input. The charAt(0) function returns the first character in that string: </p>
+	<ul>
+	  <li>&nbsp; &nbsp; answer = <strong>input</strong>.next().charAt(0); </li>
+	</ul>
+	</div> 
+</div>  
+    <div role="tabpanel" class="tab-pane" id="pythonCode2">
+		<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+		Python Note: </strong>The <code> do while</code> loop is not supported by Python.</div> 
+    </div>
+</div>
+  </ol>
+  
+  <ol start="2">
+  <li>We now ensure the program is able to deal with both upper case and lower case input. The input value is converted to lower case prior to testing and will accept both 'b' and 'B' input as the correct answer.</li>
+
+  <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#jsCode3" aria-controls="javaScriptCode1" role="tab" data-toggle="tab">JavaScript</a></li>
+      <li role="presentation"><a href="#javaCode3" aria-controls="javaCode1" role="tab" data-toggle="tab">Java</a></li>
+      <li role="presentation"><a href="#pythonCode3" aria-controls="pythonCode1" role="tab" data-toggle="tab">Python</a></li>
+  </ul>
+<div class="tab-content">
+   <div role="tabpanel" class="tab-pane active" id="jsCode3">
+   <pre class="line-numbers"><code class="language-javascript">var answer; 
+do {
+    answer = prompt("Loops at least once:  a) while, b) do while, c) for"," ");
+    answer = answer.toLowerCase();   
+} while ( answer != 'b' );      
+
+alert("Correct! The do while loops at least once.");</code></pre>
+
+	<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+		JavaScript Note: </strong>In line 4 the toLowerCase() method returns the string with any upper case letters converted to 
+lower case letters. We store the returned string back into the variable <code>answer</code>.
+</div>  
+  </div> 
+  <div role="tabpanel" class="tab-pane" id="javaCode3">
+  <pre class="line-numbers"><code class="language-java">Scanner input = new Scanner(System.in);
+  
+char answer;  
+do {
+    System.out.println("Loops at least once:  a) while, b) do while, c) for");
+    System.out.println("Enter a, b or c");
+    answer = input.next().charAt(0); 
+    answer = Character.toLowerCase(answer);
+} while (answer != 'b');  
+
+System.out.println("Correct! The do while loops at least once."); </code></pre>
+
+	<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+		Java Note: </strong> In line 3 we declare the <code>answer</code> variable as a char. 
+In line 7 the program returns the lower case equivalent of the character, if any, or the character itself and stores it back in answer.
+   </div>
+
+  </div>
+  <div role="tabpanel" class="tab-pane" id="pythonCode3">
+		<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+		Python Note: </strong>The <code> do while</code> loop is not supported by Python.</div> 
+  </div>
+</div> 
+ </ol>   
+
+  To get a good understanding of the logic developed   
+  <a href="../codeVisAlpha.php?example=dowhile1" target="_blank" rel="noopener">view Example 1 in the Code Visualiser <span class="glyphicon glyphicon-export" aria-hidden="true"></span></a>
+  
+  <br>
+  <br>
+
+  <!-- end of example 1 -->
+ 
+  <h3 class="subgroup" id="Example2">Example 2:  Guess a Secret Number</h3>
+  <p>In this second example we will use the <code> do while </code> loop to create a simple game that prompts a user to guess a secret number between 1 and 15.
+  The user enters guesses until their input matches the secret number.</p>
+
+  <ol>
+  <li>We create a variable <code>secretNumber</code> and give it the integer value 10.  A variable <code>
+  userGuess</code> is used to store the guess entered by the user and variable <code>guesses</code> will be 
+  used to track how many guesses the user takes.
+  <br><br>
+  Each time through the loop we get the next guess from the user and we update the number of guesses by one. We will repeat the loop block until the number provided by user matches 
+  the value stored in <code>secretNumber</code>.
+  <br><br>
+  When the number is guessed we will exit the loop and let the user know how many guesses 
+they took to find the secret number.</li>
+
+  <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#jsCode3" aria-controls="javaScriptCode1" role="tab" data-toggle="tab">JavaScript</a></li>
+      <li role="presentation"><a href="#javaCode3" aria-controls="javaCode1" role="tab" data-toggle="tab">Java</a></li>
+      <li role="presentation"><a href="#pythonCode3" aria-controls="pythonCode1" role="tab" data-toggle="tab">Python</a></li>
+  </ul>
+      
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="jsCode3">
+      <pre class="line-numbers"><code class="language-javascript">var secretNumber = 10;
+var guesses = 0; 
+var userGuess;
+
+do {
+    userGuess = prompt("Enter a number between 1 and 15","");
+    userGuess = parseInt(userGuess);
+    guesses++;  
+} while (userGuess != secretNumber);
+
+alert("Guessed in " + guesses + " attempt(s).");</code></pre>
+
+  <div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+  JavaScript Note:</strong> 
+  As the users guess is entered in a text field, the data type will be a <em>string</em>. To convert it to an integer number use the 
+  <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/parseInt" target="_blank" rel="noopener"><code>parseInt()</code> <span class="glyphicon glyphicon-education" aria-hidden="true"></span></a> function.
+  </div>
+  
+  </div>
+
+  <div role="tabpanel" class="tab-pane" id="javaCode3">
+      <pre class="line-numbers"><code class="language-java">Scanner input = new Scanner(System.in);
+  
+int secretNumber = 10;
+int guesses = 0; 
+int userGuess;
+
+System.out.println("Guess the Number Game");
+
+do {
+    System.out.println("Enter a number between 1 and 15");
+    userGuess  = input.nextInt();   
+    guesses++; 
+} while (userGuess != secretNumber);
+
+System.out.println("Guessed in " + guesses + " attempt(s).");</code></pre>
+     	  	  
+      <div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+  Java Notes: </strong><ul><li>Java requires that the variable type is defined before use.</li>
+  <li>The nextInt() method gets the integer number entered by the user.</li>
+  </ul>
+  
+      </div>
+  </div>	
+  <div role="tabpanel" class="tab-pane" id="pythonCode3">
+	  <div class="alert alert-info" role="alert">
+         <strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>Python Note: </strong>The <code>do while</code> is not supported by Python.
+	  </div>
+	  </div>
+</div>	   
+  </ol>
+  
+  <ol start="2">
+  <li>Now we will extend the program to give the a hint (higher or lower) based on the users last input.
+  <br><br>
+  We create an empty string variable <code>hint</code> which is updated within the
+	  loop with an appropriate message <strong>only</strong> if the users guess is higher or 
+	  lower than the secret number. The value in this variable is concatenated (joined) to the message displayed when the user 
+ is asked for a guess.</li>
+ 
+
+  <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#jsCode4" aria-controls="javaScriptCode1" role="tab" data-toggle="tab">JavaScript</a></li>
+      <li role="presentation"><a href="#javaCode4" aria-controls="javaCode1" role="tab" data-toggle="tab">Java</a></li>
+      <li role="presentation"><a href="#pythonCode4" aria-controls="pythonCode1" role="tab" data-toggle="tab">Python</a></li>
+  </ul>    
+  <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="jsCode4">
+      <pre class="line-numbers"><code class="language-javascript">var secretNumber = 10;
+var guesses = 0; 
+var hint = ''; 
+var userGuess;	  
+	  
+do {
+    userGuess = prompt("Enter a number between 1 and 15" + hint," ");
+    userGuess = parseInt(userGuess);
+    guesses++;  
+    if (userGuess > secretNumber) {
+        hint = ' (HINT: less than ' + userGuess + ')';
+    } else if (userGuess < secretNumber) {
+        hint = ' (HINT: greater than ' + userGuess + ')';
+    }
+} while (userGuess != secretNumber);
+
+alert("Guessed in " + guesses + " attempt(s).");</code></pre></div>
+     
+
+	 <div role="tabpanel" class="tab-pane" id="javaCode4">
+      <pre class="line-numbers"><code class="language-java">Scanner input = new Scanner(System.in);
+  
+int secretNumber = 10;
+int guesses = 0; s
+int userGuess;
+String hint = ""; 
+	  
+System.out.println("Guess the Number Game"); 
+do {
+    System.out.println("Enter a number between 1 and 15" + hint + "");
+	userGuess  = input.nextInt();   
+    guesses++;  
+    if (userGuess > secretNumber) {
+        hint = " (HINT: less than " + userGuess + ")";
+    } else if (userGuess < secretNumber) {
+        hint = " (HINT: greater than " + userGuess + ")";
+    }
+} while (userGuess != secretNumber);
+
+System.out.println("Guessed in " + guesses + " attempt(s).");</code></pre></div> 
+
+    <div role="tabpanel" class="tab-pane" id="pythonCode4">
+	  
+	  <div class="alert alert-info" role="alert">
+         <strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>Python Note: </strong>The <code>switch case</code> is not supported by Python.
+	  </div>
+	  
+	</div>
+  </ol>
+  
+  You can <a href="../codeVisAlpha.php?example=dowhile2" target="_blank" rel="noopener">view Example 2 in the Code Visualiser <span class="glyphicon glyphicon-export" aria-hidden="true"></span></a>
+ </div>
+
+   
+  <!--
+  , or play with the code below (press the "Run Code" button to run the code):
+  <a class="jsbin-embed" href="https://jsbin.com/reweye/3/edit?html,output">JS Bin on jsbin.com</a>
+  <script src="https://static.jsbin.com/js/embed.min.js?3.39.14"></script>.
+  -->
+ 
+
+ </div>  
+
+  <div class="row">
+      <!--Nav Bar -->
+      
+      <nav class="col-md-3 bs-docs-sidebar hidden-print hidden-sm hidden-xs">
+          <ul id="sidebar" class="nav nav-stacked">
+              <li>
+                  <a href="#Definition">Definition</a>
+              </li>
+              <li>
+                  <a href="#Syntax">Syntax</a>
+                  <ul class="nav nav-stacked">
+                      <li><a href="#dowhile">do while</a></li>
+                  </ul>
+              </li>
+              <li>
+                  <a href="#Examples">Examples</a>
+                  <ul class="nav nav-stacked">
+                      <li><a href="#Example1">Example 1</a></li>
+                      <li><a href="#Example2">Example 2</a></li> 
+                  </ul>
+              </li>
+          </ul>
+      </nav>
+  </div>
+           
+  </main>
+  <nav class="navbar navbar-default no-margin-bottom">
+  <div class="container">
+  <p class="navbar-text navbar-right">&copy; Copyright 2016-2019 <a href="https://www.westminster.ac.uk" class="navbar-link">University of Westminster</a></p>
+  </div>
+  </nav>
+  
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="../bootstrap-replacement.js"></script>
+<script src="../tabs-replacement.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+  <script src="../prism/prism.js"></script>
+  <script src="../prism/prism-line-numbers.js"></script>
+  <script src="../prism/prism-line-highlight.js"></script>
+  <script src="lessons.js"></script>
+  <script>
+  $('body').scrollspy({
+    target: '.bs-docs-sidebar',
+    offset: 60
+  });
+  $("#sidebar").affix({
+    offset: {
+      top: 80
+    }
+  });
+  </script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+   
+    ga('create', 'UA-90995417-1', 'auto');
+    ga('send', 'pageview');
+   
+  </script>
+  </body>
+</html>

@@ -1,0 +1,410 @@
+<!doctype html>
+<!-- Copyright University of Westminster, all rights reserved
+     Author: Anne-Gaelle Colom -->
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Lessons: If Else</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="../jquery-3.7.1.min.js"></script>
+	<!--<script src="https://code.jquery.com/jquery-git.js"></script>-->
+
+  	<link rel="stylesheet" href="../jquery-ui-1.12.0/jquery-ui.min.css">
+    <link href="../prism/prism.css" rel="stylesheet" />
+    <link href="../prism/prism-line-numbers.css" rel="stylesheet" />
+    <link href="../prism/prism-line-highlight.css" rel="stylesheet" />
+    
+
+<!-- Optional theme -->
+
+     <script src="../jquery-ui-1.12.0/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="style.css" /> 
+<style>
+
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+  color: #108040,
+  border-left: 1px solid #108040;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+  padding-left: 18px;
+  font-weight: bold;
+  color: #108040;
+  background-color: transparent;
+  border-left: 2px solid #108040;
+}
+.back-to-top:hover,
+.bs-docs-theme-toggle:hover {
+  color: #563d7c;
+  text-decoration: none;
+}
+
+.dropdown-menu>.active>a, 
+.dropdown-menu>.active>a:focus, 
+.dropdown-menu>.active>a:hover {
+  background-image: none;
+  background-color: #108040;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top navbar-lesson" >
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><img src="../images/westminster-logo.png" width="65%"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown active">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lessons <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class="active lesson"><a href="ifelse.html">if else</a></li>
+              	<li><a href="for.html">for loop</a></li>
+              	<li><a href="while.html">while loop</a></li>
+              	<li><a href="dowhile.html">do while loop</a></li>
+              	<li><a href="switch.html">switch case</a></li>
+              	<li><a href="functions.html">function calls</a></li>
+              	<li><a href="arrays.html">arrays</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Videos <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+              	<li><a href="../videos/ifelse.html">if else</a></li>
+              	<li><a href="../videos/for.html">for loop</a></li>
+              	<li><a href="../videos/while.html">while loop</a></li>
+              	<li><a href="../videos/dowhile.html">do while loop</a></li>
+              	<li><a href="../videos/switch.html">switch case</a></li>
+              	<li><a href="../videos/functions.html">function calls</a></li>
+              	<li><a href="../videos/arrays.html">arrays</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Code Visualiser <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="../codeVisAlpha.php">if else</a></li>
+              	<li><a href="#">for loop</a></li>
+              	<li><a href="#">while loop</a></li>
+              	<li><a href="#">do while loop</a></li>
+              	<li><a href="#">switch case</a></li>
+              	<li><a href="#">function calls</a></li>
+              	<li><a href="#">arrays</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Array Visualiser <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="../arrayVisualiser.php">Creation</a></li>
+             	<li><a href="#"></a></li>
+              	<li><a href="#"></a></li>
+              	<li><a href="#">Push</a></li>
+              	<li><a href="#">Pop</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../About/about.html">About this App</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+
+
+
+<main class="container language-javascript">
+<div class="col-md-9" role="main"><h1>if... else</h1>
+<h2 id="Definition" class="group">Definition</h2>
+<p>The <code>if</code> statement is used to execute a block of code when a condition is true. It is possible to add an <code>else</code> to the <code>if</code> statement to execute a difference block of code when this condition is not true.</p>
+<h2 id="Syntax" class="group">Syntax</h2>
+<h3 class="subgroup" id="if">if</h3>
+<p>A simple <code>if</code> statement has the following syntax: <a href="../codeVisAlpha.php?example=if" target="_blank" rel="noopener"><span class="glyphicon glyphicon-export" aria-hidden="true"></span></a>
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#jsCode1" aria-controls="javaScriptCode1" role="tab" data-toggle="tab">JavaScript</a></li>
+    <li role="presentation"><a href="#javaCode1" aria-controls="javaCode1" role="tab" data-toggle="tab">Java</a></li>
+    <li role="presentation"><a href="#pythonCode1" aria-controls="pythonCode1" role="tab" data-toggle="tab">Python</a></li>
+  </ul>
+<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="jsCode1">
+    <pre class="line-numbers"><code class="language-javascript">if ( condition ) {
+	block1;
+}</code></pre></div>
+    <div role="tabpanel" class="tab-pane" id="javaCode1"><pre class="line-numbers"><code class="language-java">if ( condition ) {
+	block1;
+} </code></pre></div>
+    <div role="tabpanel" class="tab-pane" id="pythonCode1"><pre class="line-numbers"><code class="language-python">if condition:
+	block1;
+</code></pre></div>
+  </div>
+</p>
+
+<h3 class="subgroup" id="ifelse">if ... else</h3>
+<p>We can add an <code>else</code> and get a full <code>if ... else</code> statement: <a href="../codeVisAlpha.php?example=ifelse" target="_blank" rel="noopener"><span class="glyphicon glyphicon-export" aria-hidden="true"></span></a>
+<!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#jsCode2" aria-controls="javaScriptCode2" role="tab" data-toggle="tab">JavaScript</a></li>
+    <li role="presentation"><a href="#javaCode2" aria-controls="javaCode1" role="tab" data-toggle="tab">Java</a></li>
+    <li role="presentation"><a href="#pythonCode2" aria-controls="pythonCode1" role="tab" data-toggle="tab">Python</a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="jsCode2">
+    <pre class="line-numbers"><code class="language-javascript">if ( condition ) {
+	block1;
+} else {
+	block2;
+}</code></pre></div>
+    <div role="tabpanel" class="tab-pane" id="javaCode2"><pre class="line-numbers"><code class="language-java">if ( condition ) {
+	block1;
+} else {
+	block2;
+}</code></pre></div>
+    <div role="tabpanel" class="tab-pane" id="pythonCode2"><pre class="line-numbers"><code class="language-python">if condition:
+	block1;
+else:
+	block2;
+</code></pre></div>
+  </div>
+<ul class="list">
+<li>The <strong>condition</strong> is an expression that evaluates to either <code>true</code> or <code>false</code>.</li>
+<li>The <strong>block1</strong> is a block of code that gets executed when the <strong>condition</strong> evaluates to <code>true</code>.</li>
+<li>The <strong>block2</strong> is a block of code that gets executed when the <strong>condition</strong> evaluates to <code>false</code>.</li>
+</ul>  
+
+</p>
+
+<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> Note:</strong> With this structure, the code executed is always either block1 or block2. Both blocks cannot be executed at the same time.</div>
+<h3 class="subgroup" id="ifelseifelse">if ... else if ... else</h3>
+<p>When the original condition is false and we reach the <code>else</code>, we can check for another condition using the <code>else if</code>: <a href="../codeVisAlpha.php?example=ifelseifelse" target="_blank" rel="noopener"><span class="glyphicon glyphicon-export" aria-hidden="true"></span></a>
+<pre class="line-numbers"><code class="language-javascript">if ( condition ) {
+	block1;
+} else if ( condition2 ) {
+	block2;
+} else {
+	block3; 
+}</code></pre>
+
+<ul class="list">
+<li>The <strong>condition</strong> is an expression that evaluates to either <code>true</code> or <code>false</code>.</li>
+<li>The <strong>block1</strong> is a block of code that gets executed when the <strong>condition</strong> evaluates to <code>true</code>.</li>
+	<li>The <strong>block2</strong> is a block of code that gets executed when the <strong>condition</strong> evaluates to <code>false</code> and <strong>condition2</strong> evaluates to <code>true</code>.</li>
+<li>The <strong>block3</strong> is a block of code that gets executed when both <strong>condition</strong> and <strong>condition2</strong> evaluate to <code>false</code>.</li>
+</ul>
+</p>
+
+<p>The <code>if ... else if ... else</code> is a useful construct when there are more than 2 cases to the outcome. For example, we can use a simple <code>if ... else</code> to check the result of flipping a coin, because the result will either be <em>heads</em> or <em>tails</em> so 2 possibilities. This would result in the following code: <a href="../codeVisAlpha.php?example=ifelse2" target="_blank" rel="noopener"><span class="glyphicon glyphicon-export" aria-hidden="true"></span></a>
+<pre class="line-numbers"><code class="language-javascript">if ( coin == heads ) {
+  message = "You got heads";
+} else {
+  message = "You got tails";
+}</code></pre>
+</p>
+
+
+<p>However, if you wanted to check the results of rolling a dice, which has 6 possibilities, a simple <code>if .. else</code> statement will not be sufficient. In this case, the <code>if ... else if ... else</code> construct will be handy: <a href="../codeVisAlpha.php?example=ifelseifelse2" target="_blank" rel="noopener"><span class="glyphicon glyphicon-export" aria-hidden="true"></span></a>
+<pre class="line-numbers"><code class="language-javascript">if ( side == one ) {
+  message = "You scored 1 point";
+} else if ( side == two ) {
+  message = "You scored 2 points";
+} else if ( side == three ) {
+  message = "You scored 3 points";
+} else if ( side == four ) {
+  message = "You scored 4 points";
+} else if ( side == five ) {
+  message = "You scored 5 points";
+} else {
+  message = "You scored 6 points";
+} </code></pre></p>
+
+<div class="alert alert-warning" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> Note:</strong> There is no need to have an if for the sixth option <code>side == six</code> since this is the only possibility if none of the previous conditions are <code>true</code></div>
+
+
+<h2 class="group" id="Examples">Examples</h2>
+<h3 class="subgroup" id="Example1">Example 1: Ticket Price</h3>
+<p>You want to check the ticket price the user should pay.
+The rule to determine the price is as follows: 
+<ul class="list">
+<li>Free for anyone up to the age of 12</li>
+<li>&pound;10 for above 12, up to the age of 16</li>
+<li>&pound;20 for above 16</li>
+</ul></p>
+
+<p>Let's create the code for this, one step at a time. </p>
+
+<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> Note:</strong> there are many solutions to this problem and it is important that you write code that you feel comfortable with and that you tackle the problem using a logic that feels natural to you.</div>
+<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> Note:</strong> We will declare the variables as we start using them in the code.</div>
+<ol>
+<li>Entry is Free for anyone up to the age of 12 <code>age</code> will be the variable representing the user's age, and will contain a <em>number</em>. <code>entry</code> will be the variable representing the entry price, and will contain a <em>string</em>.</li>
+<pre class="line-numbers"><code class="language-javascript">var age, entry;
+
+if ( age <= 12 ) {
+  entry = "Free";
+}</code></pre>
+
+<li>If the user is above 12, then the entry will be &pound;10 if they are up to the age of 16.</li>
+<pre class="line-numbers" ><code class="language-javascript">var age, entry;
+
+if ( age <= 12 ) {
+  entry = "Free";
+} else if ( age <= 16 ) {
+  entry = "£10";
+}</code></pre>
+
+<li>Then if they are above the age of 16 (i.e. neither 12 or under nor 16 or under), we know that they are above 16 and must pay &pound;20.</li>
+<pre class="line-numbers" ><code class="language-javascript">var age, entry;
+
+if ( age <= 12 ) {
+  entry = "Free";
+} else if ( age <= 16 ) {
+  entry = "£10";
+} else {
+  entry = "£20";
+}</code></pre>
+</ol>
+<p><a href="../codeVisAlpha.php">View this example in the Code Visualiser</a>. You may want to animate this code also using the control panel on the right handside.
+<br>
+<h3 class="subgroup" id="Example2">Example 2: Module Outcome</h3>
+You want to check whether someone has passed a module (in this case, a module is a course component, as university students would know it). The rule to pass a module is as follows: 
+<ul class="list">
+<li>To pass the module, a student needs a minimum module average mark of 40% and also meet the minimum qualifying mark for the various module components that have one.</li>
+<li>Anyone that gets below 40% but above 30% or above 30% and doesn't meet any of the qualifying mark will get a referral in the module components for which they have not achieved a mark of at least 40.</li>
+<li>Anyone with an average mark below 40% has failed the module.</li>
+</ul>
+
+Let's create the code for this, one step at a time. 
+
+<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> Note:</strong> there are many solutions to this problem and it is important that you write code that you feel comfortable with and that you tackle the problem using a logic that feels natural to you.</div>
+
+<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> Note:</strong> We will declare the variables as we start using them in the code.</div>
+<ol>
+<li>All students with an average mark above 40% may have passed the module. <code>average</code> will be the variable representing the module average, and will contain a <em>number</em>. <code>outcome</code> will be the variable representing the module outcome, and will contain a <em>string</em>.</li>
+<pre class="line-numbers"><code class="language-javascript">var average = 0,
+    outcome = "";
+
+if ( average >= 40 ) {
+	outcome = "Pass";
+}</code></pre>
+<li>Let's consider that the module has a coursework and an exam, and that only the exam has a qualifying mark of 30%. The <code>exam</code> variable will represent the exam mark, and will contain a <em>number</em>. To pass the module, the student needs an average mark of at least 40% (already in place) but also an exam mark above 30. If not, they get a referral. We can do this inside another <code>if...else</code> block:</li>
+<pre class="line-numbers" ><code class="language-javascript">var average = 0,
+    exam = 0,
+    outcome = "";
+
+if ( average >= 40 ) {
+	if ( exam >= 30 ) {
+		outcome = "Pass";
+    } else {
+    	outcome = "Referral";
+    }
+}</code></pre>
+<li>We'll now add an <code>else</code> to the original <code>if</code> so that anyone with an average above 30% will get a referral:</li>
+<pre class="line-numbers"><code class="language-javascript">var average = 0,
+    exam = 0,
+    outcome = "";
+
+if ( average >= 40 ) {
+	if ( exam >= 30 ) {
+		outcome = "Pass";
+    } else {
+    	outcome = "Referral";
+    }
+} else if ( average >= 30 ) {
+	outcome = "Referral";
+}</code></pre>
+<li>Finally, anyone students that don't get an average above 40% or an average above 30% get a fail in the module:</li>
+<pre class="line-numbers"><code class="language-javascript">var average = 0,
+    exam = 0,
+    outcome = "";
+
+if ( average >= 40 ) {
+	if ( exam >= 30 ) {
+		outcome = "Pass";
+    } else {
+    	outcome = "Referral";
+    }
+} else if ( average >= 30 ) {
+	outcome = "Referral";
+} else {
+	outcome = "Fail";
+}</code></pre>
+</ol>
+
+To get a good understanding of the logic developed here and the <code>if else</code> statements structure, <a href="../codeVisAlpha.php?example=ifExample2" target="_blank" rel="noopener"><span class="glyphicon glyphicon-export" aria-hidden="true"></span> view this in the Code Visualiser</a>, or play with the code below:
+<a class="jsbin-embed" href="https://jsbin.com/dejoyo/18/embed?js,output">JS Bin on jsbin.com</a><script src="https://static.jsbin.com/js/embed.min.js?3.39.14"></script>.
+
+</div>
+<div class="row">
+    <!--Nav Bar -->
+    
+    <nav class="col-md-3 bs-docs-sidebar hidden-print hidden-sm hidden-xs">
+        <ul id="sidebar" class="nav nav-stacked">
+            <li>
+                <a href="#Definition">Definition</a>
+            </li>
+            <li>
+                <a href="#Syntax">Syntax</a>
+                <ul class="nav nav-stacked">
+                    <li><a href="#if">if</a></li>
+                    <li><a href="#ifelse">if ... else</a></li>
+                    <li><a href="#ifelseifelse">if ... else if ... else</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#Examples">Examples</a>
+                <ul class="nav nav-stacked">
+                    <li><a href="#Example1">Example 1</a></li>
+                    <li><a href="#Example2">Example 2</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</div>
+</main>
+
+<nav class="navbar navbar-default no-margin-bottom">
+<div class="container">
+<p class="navbar-text navbar-right">&copy; Copyright 2016-2017 <a href="https://www.westminster.ac.uk" class="navbar-link">University of Westminster</a></p>
+</div>
+</nav>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="../bootstrap-replacement.js"></script>
+<script src="../tabs-replacement.js"></script>
+
+<script src="../prism/prism.js"></script>
+<script src="../prism/prism-line-numbers.js"></script>
+<script src="../prism/prism-line-highlight.js"></script>
+<script>
+$('body').scrollspy({
+  target: '.bs-docs-sidebar',
+  offset: 60
+});
+$("#sidebar").affix({
+  offset: {
+    top: 80
+  }
+});
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ 
+  ga('create', 'UA-90995417-1', 'auto');
+  ga('send', 'pageview');
+ 
+</script>
+</body>
+</html>

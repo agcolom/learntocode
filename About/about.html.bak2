@@ -1,0 +1,431 @@
+<!doctype html>
+<!-- Copyright University of Westminster, all rights reserved
+     Author: Anne-Gaelle Colom -->
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>About this Application</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="../jquery-3.7.1.min.js"></script>
+	<!--<script src="https://code.jquery.com/jquery-git.js"></script>-->
+
+  	<link rel="stylesheet" href="../jquery-ui-1.12.0/jquery-ui.min.css">
+  <link rel="stylesheet" href="../bootstrap-replacement.css">
+    <link href="../prism/prism.css" rel="stylesheet" />
+    <link href="../prism/prism-line-numbers.css" rel="stylesheet" />
+    <link href="../prism/prism-line-highlight.css" rel="stylesheet" />
+    
+
+<!-- Optional theme -->
+
+     <script src="../jquery-ui-1.12.0/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="../Lessons/style.css" /> 
+<style>
+
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+  color: #FAA523,
+  border-left: 1px solid #FAA523;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+  padding-left: 18px;
+  font-weight: bold;
+  color: #FAA523;
+  background-color: transparent;
+  border-left: 2px solid #FAA523;
+}
+.back-to-top:hover,
+.bs-docs-theme-toggle:hover {
+  color: #563d7c;
+  text-decoration: none;
+}
+
+.dropdown-menu>.active>a, 
+.dropdown-menu>.active>a:focus, 
+.dropdown-menu>.active>a:hover {
+  background-image: none;
+  background-color: #FAA523;
+}
+
+nav.navbar-about {
+    border-top: 4px solid #FAA523;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top navbar-about" >
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><img src="../images/westminster-logo.png" width="65%"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lessons <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="../Lessons/ifelse.html">if else</a></li>
+              	<li><a href="../Lessons/for.html">for loop</a></li>
+              	<li><a href="../Lessons/while.html">while loop</a></li>
+              	<li class="disabled"><a href="../Lessons/dowhile.html">do while loop</a></li>
+              	<li class="disabled"><a href="../Lessons/switch.html">switch case</a></li>
+              	<li class="disabled"><a href="../Lessons/functions.html">function calls</a></li>
+              	<li class="disabled"><a href="../Lessons/arrays.html">arrays</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Videos <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+              	<li class="disabled"><a href="../Videos/ifelse.html">if else</a></li>
+              	<li class="disabled"><a href="../Videos/for.html">for loop</a></li>
+              	<li class="disabled"><a href="../Videos/while.html">while loop</a></li>
+              	<li class="disabled"><a href="../Videos/dowhile.html">do while loop</a></li>
+              	<li class="disabled"><a href="../Videos/switch.html">switch case</a></li>
+              	<li class="disabled"><a href="../Videos/functions.html">function calls</a></li>
+              	<li class="disabled"><a href="../Videos/arrays.html">arrays</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Code Visualiser <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="../codeVisualiser.php">if else</a></li>
+              	<li class="disabled"><a href="#">for loop</a></li>
+              	<li class="disabled"><a href="#">while loop</a></li>
+              	<li class="disabled"><a href="#">do while loop</a></li>
+              	<li class="disabled"><a href="#">switch case</a></li>
+              	<li class="disabled"><a href="#">function calls</a></li>
+              	<li class="disabled"><a href="#">arrays</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Array Visualiser <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class="disabled"><a href="../arrayVisualiser.php">Creation</a></li>
+             	<li class="disabled"><a href="#"></a></li>
+              	<li class="disabled"><a href="#"></a></li>
+              	<li class="disabled"><a href="#">Push</a></li>
+              	<li class="disabled"><a href="#">Pop</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="#">About this App</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+
+
+
+<main class="container language-javascript">
+<div class="col-md-9" role="main"><h1>About this Application</h1>
+
+<h2 id="Introduction" class="group">Introduction</h2>
+	<h3 id="Background" class="subgroup">Background</h3>
+	<p>I have always found that some people struggle to get into coding, because coding is abstract. It represents a series of instructions, but the coding constructs and the full program can be difficult for individuals to "see" what the program is doing, or what the code represents. This is the problem I am trying to fix with the codeVisualiser. I want everyone to be able to "see" code and coding contructs.</p>
+	<h3 id="Usage" class="subgroup">Usage</h3>
+	<p>This application was <a href="#Development">developed</a> by <a href="https://twitter.com/agcolom">Anne-Gaelle Colom</a> from the University of Westminster. You are free to use the codeVisualiser, provided that you comply with the <a href="Licence.pdf">Academic Licence Agreement</a>. </p>
+
+<div class="alert alert-warning" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> Please Note:</strong> The CodeVisualiser is under development and currently only supports a specific <a href="#CodeVisualiserConstructs">list of constructs</a> and requires the code to be written following a <a href="#CodeVisualiserStyle">strict style guide</a>. </div>
+
+<p>Please follow <a href="https://twitter.com/agcolom">@agcolom</a> for updates and to report issues with the #codeVisualiser.</p>
+
+<h2 id="Lessons" class="group">Lessons</h2>
+
+<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> Indicates a note that you should read carefully. <br>
+<span class="glyphicon glyphicon-export" aria-hidden="true"></span> Indicates a link to the <a href="#CodeVisualiser">code visualiser</a>. The code that is associated with the link will be loaded in the Code Visualiser so that you can directly see its graphical representation.<br>
+<span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span> Indicates a link to another page within the application (e.g. a link to another lesson page). <br>
+<span class="glyphicon glyphicon-education" aria-hidden="true"></span> Indicates a link to an external resource to aid the understanding of the lesson.<br>
+<br>
+<h2 id="Videos" class="group">Videos</h2>
+<p>Under the Video tab, you'll find interactive videos for the subject you have chosen in the Videos submenu. During the video, you will be prompted to answer questions. When you submit your answer, you will received immediate feedback on how well you did as well as why the answer you chose was correct or incorrect.</p>
+<br>
+<h2 id="CodeVisualiser" class="group">Code Visualiser</h2>
+<h3 id="CodeVisualiserIntro" class="subgroup">Introduction</h3>
+<p>The code Visualiser analyses code entered in the text editor and shows graphically in realtime how the code flows through outputing an animatable SVG flowchart. </p>
+<h3 id="CodeVisualiserLanguages" class="subgroup">Supported Languages</h3>
+<p>Currently, the application supports code written in JavaScript, and C-like languages (C, C++, C#, Java, etc). It also supports any pseudo language, provided that you use the <a href="#CodeVisualiserConstructs">supported statements and constructs</a>.</p>
+
+<h3 id="CodeVisualiserConstructs" class="subgroup">Supported Constructs</h3>
+<p>
+In this version, only the following constructs are supported: <code>if</code> ... <code>else</code>, <code>for</code>, <code>while</code>, <code>do</code> ... <code>while</code>, <code>switch ... case</code>. We also support the <code>break</code> statement, but only at the end of a <code>case</code>, before a new <code>case</code> or <code>default</code>.</p>
+
+<p>Any other statement is just considered as a simple sequential instruction. </p>
+
+<h3 id="CodeVisualiserStyle" class="subgroup">Supported Style Guide</h3>
+<p>Because of the way the codeVisualiser works, it will <strong>only work</strong> correctly if you adhere to <strong>strict coding style guide</strong>. In particular, the <code>if</code>/<code>else</code>/<code>for</code>/<code>while</code>/<code>do</code>/<code>switch</code> <strong>must be using curly braces</strong>. These statements must have their opening curly brace '<code>{</code>' on the same line as the statement, and their closing curly brace '<code>}</code>', on a new line. The <code>else</code> statement must be on the same line as the closing <code>if</code> curly brace. Here are some good and bad examples:</p>
+<pre class="line-numbers"><code class="language-javascript">// if else - Examples of supported coding styles 
+if ( condition )  { 
+	doSomething();
+}
+
+if ( condition ) {
+    doSomething();
+} else {
+    doSomethingElse();
+}
+
+if ( condition ) {
+    doSomething();
+} else if ( otherCondition ) {
+    doSomethingElse();
+} else {
+    doSomeOtherThing();
+}
+
+// if else - Examples of coding styles not yet supported
+if ( condition ) 
+{ 
+	doSomething();
+}
+
+if ( condition ) doSomething();
+
+if ( condition ) 
+	doSomething();
+
+if ( condition ) {
+    doSomething();
+} 
+else if ( otherCondition ) {
+    doSomethingElse();
+} 
+else {
+    doSomeOtherThing();
+}
+
+// for - Example of supported coding style
+for ( i = 0; i < 100; i++ ) {
+    doSomething();
+}
+
+// for - Examples of coding styles not yet supported
+for ( i = 0; i < 100; i++ ) 
+{
+    doSomething();
+}
+
+for ( i = 0; i < 100; i++ ) 
+    doSomething();
+
+// while - Example of supported coding style
+while ( condition ) {
+	doSomething();
+    iterating++;
+}
+
+// do while - Example of supported coding style
+do {
+	doSomething();
+    iterating++;
+} while ( condition );
+
+// switch case - Example of supported coding style
+switch ( expression ) {
+    case value1:
+        doSomething();
+        break;
+    case value2:
+        doSomethingElese();
+        break;
+    default:
+         doSomeOtherThing();
+}
+</code></pre> 
+<br>
+
+<h3 id="CodeVisualiserCustomisation" class="subgroup">Customisation</h3>
+<p>You can customise the look and feel of your code editor by changing its theme. There are 46 themes you can choose from. <a  id="opener">View a demo <span class="glyphicon glyphicon-modal-window" aria-hidden="true"></span></a></p>
+<div id="dialog" title="Basic dialog"><img src="changeTheme.gif"></div>
+
+<h3 id="CodeVisualiserGenerateFlowChart" class="subgroup">Generating the Flowchart</h3>
+<p>The flow chart will automatically be generated each time you:
+<ul>
+	<li>Save your code by pressing the 'Save' button under the text editor, hitting 'Ctrl s' on a PC or 'Cmd s' on a Mac</li>
+    <li>Upload code from a file</li>
+</ul>
+</p>
+
+<h3 id="CodeVisualiserSave" class="subgroup">Saving the editor code</h3>
+<p>When you edit the code in the editor, you will need to save it to generate the corresponding flowchart. You will know that the code needs saving as an asterisk '*' will be displayed in the top right-hand corner of the editor header. You can save your code by pressing the 'Save' button under the text editor, hitting 'Ctrl s' on a PC or 'Cmd s' on a Mac. </p>
+
+<h3 id="CodeVisualiserDownloadCode" class="subgroup">Downloading the Code from the editor</h3>
+<p>You can download on your computer the code that you have written in your editor by pressing the 'Download Code' button.</p>
+
+<h3 id="CodeVisualiserUploadCode" class="subgroup">Uploading Code into the editor</h3>
+<p>You can upload code from your computer into the editor by selecting the file, using the 'Choose file' button, selecting the file you would like to upload, and then pressing the 'Upload' button.</p>
+
+<h3 id="CodeVisualiserViewFlowchart" class="subgroup">Viewing the Flowchart</h3>
+<p>The flowchart will automatically be displayed when you <a href="#CodeVisualiserSave">save your code</a> or upload new code.</p>
+
+<h3 id="CodeVisualiserZooming" class="subgroup">Zooming in and out</h3>
+<p>You can zoom in and out of the flowchart by pressing the 'Zoom in' and 'Zoom out' buttons, or using the slider next to these buttons.</p>
+
+<h3 id="CodeVisualiserDownloadFlowchart" class="subgroup">Downloading the Flowchart</h3>
+<p>You can download the generated flowchart by pressing the 'Download Flowchart' button. This will download a PNG image of the flowchart locally.</p>
+
+<h3 id="CodeVisualiserAnimation" class="subgroup">Animating the Flowchart</h3>
+<p>When the Flowchart is generated, moving the cursor onto a line of code will highlight that line as well as its corresponding graphical element. Likewise, moving the cusor over a graphical element on the flowchart will highlight this element as well as its corresponding line in the code.</p>
+<p>In addition, if the control panel is visible on the flowchart page, this means that you a viewing an example that you can run and animate. You can do this either step by step, by pressing the 'Step' button, or run the code fully by pressing the 'Run' button.</p>
+
+<h2 id="ArrayVisualiser" class="group">Array Visualiser</h2>
+<h3 id="ArrayVisualiserIntro" class="subgroup">Introduction</h3>
+<p>The Array Visualiser runs the code entered in the text editor and shows graphically the representation of the array or object at the time the user requests it by running the <code>drawArray(arrayName, [expansion])</code> function.</p>
+<h3 id="ArrayVisualiserLanguages" class="subgroup">Supported Languages</h3>
+<p>At present, the array visualiser needs the code to be run in the browser and will represent arrays or objects used in that code. Therefore, the only supported language today is JavaScript.</p>
+
+<h3 id="ArrayVisualiserCustomisation" class="subgroup">Customisation</h3>
+<p>You can customise the look and feel of your code editor by changing its theme. There are 46 themes you can choose from. <a  id="opener">View a demo <span class="glyphicon glyphicon-modal-window" aria-hidden="true"></span></a></p>
+<div id="dialog2" title="Basic dialog"><img src="changeTheme.gif"></div>
+
+<h3 id="ArrayVisualiserGenerateFlowChart" class="subgroup">Generating the Graphical Representation</h3>
+<p>The Array Visualiser runs the code entered in the text editor and shows graphically the representation of the array or object at the time the user requests it by running the <code>drawArray(arrayName, [expansion])</code> function. The <code>drawArray()</code> function takes two parameters: 
+<ul><li><code>arrayName</code>: The name of the array you want to display.</li>
+<li><code>expansion</code>: Optional parameter, set to <code>true</code> to specify whether you want to expand the representation of arrays inside your <code>arrayName</code>. </li>
+</ul></p>
+<h3 id="ArrayVisualiserDownloadCode" class="subgroup">Downloading the Code from the Editor</h3>
+<p>You can download on your computer the code that you have written in your editor by pressing the 'Download Code' button.</p>
+
+<h3 id="ArrayVisualiserUploadCode" class="subgroup">Uploading Code into the Editor</h3>
+<p>You can upload code from your computer into the editor by selecting the file, using the 'Choose file' button, selecting the file you would like to upload, and then pressing the 'Upload' button.</p>
+
+<h3 id="ArrayVisualiserViewFlowchart" class="subgroup">Viewing the Graphical Representation</h3>
+<p>The graphical representation for the array or object will automatically be displayed when you <a href="#ArrayVisualiserSave">save your code</a> or upload new code.</p>
+
+<h3 id="ArrayVisualiserZooming" class="subgroup">Zooming in and out</h3>
+<p>You can zoom in and out of the graphical representation by pressing the 'Zoom in' and 'Zoom out' buttons, or using the slider next to these buttons.</p>
+
+<h3 id="ArrayVisualiserDownloadFlowchart" class="subgroup">Downloading the Graphical Representation</h3>
+<p>You can download the generated graphical representation by pressing the 'Download Graph' button. This will download a PNG image of the graphical representation  locally.</p>
+
+<h3 id="ArrayVisualiserAnimation" class="subgroup">Animating the Graphical Representation</h3>
+<p>When the graphical representation is generated, moving the cursor onto a line of code containing the <code>drawArray()</code> function will highlight that line as well as its corresponding graphical element. Likewise, moving the cusor over a graphical element on the graphical representation will highlight this element as well as its corresponding line in the code.</p>
+<p>In addition, if the control panel is visible on the flowchart page, this means that you a viewing an example that you can run and animate. You can do this either step by step, by pressing the 'Step' button, or run the code fully by pressing the 'Run' button.</p>
+
+<h2 id="Development" class="group">How this app was developed</h2>
+	<p>The site is developed from scratch using html, css and javascript. <a href="http://getbootstrap.com/">Bootstrap</a> was used for the general styling and the site menu. The codeVisualiser and arrayVisualiser are written in JavaScript. The codeVisualiser editor uses <a href="https://codemirror.net/">codeMirror</a> and <a ref="http://prismjs.com/">Prism</a> for the syntax highlighting. The graphical representation is in SVG. The SVG is generated in JavaScript. Since this is all done from scratch, it will be easy to add customising extentions, and change the graph and text colours, font size, etc. </p>
+</div>
+<div class="row">
+    <!--Nav Bar -->
+    
+    <nav class="col-md-3 bs-docs-sidebar hidden-print hidden-sm hidden-xs">
+        <ul id="sidebar" class="nav nav-stacked">
+            <li><a href="#Introduction">Introduction</a></li>
+            <ul class="nav nav-stacked">
+                    <li><a href="#Background">Background</a></li>
+                    <li><a href="#Usage">Usage</a></li>
+			</ul>
+            <li><a href="#Lessons">Lessons</a></li>
+            <li><a href="#Videos">Videos</a></li>
+            <li><a href="#CodeVisualiser">Code Visualiser</a>
+                <ul class="nav nav-stacked">
+                    <li><a href="#CodeVisualiserIntro">Introduction</a></li>
+                    <li><a href="#CodeVisualiserLanguages">Supported Languages</a></li>
+                    <li><a href="#CodeVisualiserConstructs">Supported Constructs</a></li>
+                    <li><a href="#CodeVisualiserCustomisation">Customisation</a></li>
+                    <li><a href="#CodeVisualiserGenerateFlowChart">Generating the Flowchart</a></li>
+                    <li><a href="#CodeVisualiserSave">Saving the Editor code</a></li>
+                    <li><a href="#CodeVisualiserDownloadCode">Downloading the code from the Editor</a></li>
+                    <li><a href="#CodeVisualiserUploadCode">Uploading the code into the Editor</a></li>
+                    <li><a href="#CodeVisualiserViewFlowchart">Viewing the Flowchart</a></li>
+                    <li><a href="#CodeVisualiserZooming">Zooming in and out</a></li>
+                    <li><a href="#CodeVisualiserDownloadFlowchart">Downloading the Flowchart</a></li>
+                    <li><a href="#CodeVisualiserAnimation">Animating the Flowchart</a></li>
+                </ul>
+            </li>
+            <li><a href="#ArrayVisualiser">Array Visualiser</a>
+                <ul class="nav nav-stacked">
+                    <li><a href="#ArrayVisualiserIntro">Introduction</a></li>
+                    <li><a href="#ArrayVisualiserLanguages">Supported Languages</a></li>
+                    <li><a href="#ArrayVisualiserConstructs">Supported Constructs</a></li>
+                    <li><a href="#ArrayVisualiserCustomisation">Customisation</a></li>
+                    <li><a href="#ArrayVisualiserGenerateFlowChart">Generating the Graphical Representation</a></li>
+                    <li><a href="#ArrayVisualiserDownloadCode">Downloading the code from the Editor</a></li>
+                    <li><a href="#ArrayVisualiserUploadCode">Uploading the code into the Editor</a></li>
+                    <li><a href="#ArrayeVisualiserViewFlowchart">Viewing the Graphical Representation</a></li>
+                    <li><a href="#ArrayVisualiserZooming">Zooming in and out</a></li>
+                    <li><a href="#ArrayVisualiserDownloadFlowchart">Downloading the Graphical Representation</a></li>
+                    <li><a href="#ArrayVisualiserAnimation">Animating the Graphical Representation</a></li>
+                </ul>
+            </li>
+			<li><a href="#Development">How this app was developed</a></li>
+        </ul>
+    </nav>
+</div>
+</main>
+
+<nav class="navbar navbar-default no-margin-bottom">
+<div class="container">
+<p class="navbar-text navbar-right">&copy; Copyright 2016-2017 <a href="https://www.westminster.ac.uk" class="navbar-link">University of Westminster</a></p>
+</div>
+</nav>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="../bootstrap-replacement.js"></script>
+<script src="../tabs-replacement.js"></script>
+
+<script src="../prism/prism.js"></script>
+<script src="../prism/prism-line-numbers.js"></script>
+<script src="../prism/prism-line-highlight.js"></script>
+<script>
+$('body').scrollspy({
+  target: '.bs-docs-sidebar',
+  offset: 60
+});
+$("#sidebar").affix({
+  offset: {
+    top: 80
+  }
+});
+
+$( function() {
+    $( "#dialog" ).dialog({
+      autoOpen: false,
+	  resizable: false,
+      height: "auto",
+      width: 400,
+      modal: true,
+      buttons: {
+        "Close": function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+ 
+    $( "#opener" ).on( "click", function() {
+      $( "#dialog" ).dialog( "open" );
+    });
+  } );
+  $( function() {
+    $( "#dialog2" ).dialog({
+      autoOpen: false,
+	  resizable: false,
+      height: "auto",
+      width: 400,
+      modal: true,
+      buttons: {
+        "Close": function() {
+          $( this ).dialog( "close" );
+        }
+      }
+    });
+ 
+    $( "#opener" ).on( "click", function() {
+      $( "#dialog2" ).dialog( "open" );
+    });
+  } );
+  
+</script>
+</body>
+</html>

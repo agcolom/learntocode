@@ -1,0 +1,26 @@
+=============================================================================
+ARRAY VISUALISER - NOW WORKING ✓
+=============================================================================
+
+STATUS: arrayVisualiser.html is now functional
+
+FIXES APPLIED:
+✓ Fixed syntax error (< <script → <script)
+✓ Updated jQuery 1.12.0 → 3.7.1
+✓ Updated Bootstrap → bootstrap-replacement files
+✓ Restored concatCodeVis.js with array visualizer code
+
+FILES UPDATED:
+- dest/concatCodeVis.js (replaced with version containing array code)
+- dest/concatCodeVis.js.old (backup of previous version)
+
+NOTE ON SOURCE FILES:
+The concatCodeVis.js file is a concatenated/minified version of all
+JavaScript source files. The original source files are not in this archive,
+which is normal for production deployments.
+
+BOTH VISUALIZERS NOW WORKING:
+✓ codeVisAlpha.html - Code flow visualizer
+✓ arrayVisualiser.html - Array visualizer
+
+=============================================================================

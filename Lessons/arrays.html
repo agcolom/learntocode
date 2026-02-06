@@ -1,0 +1,668 @@
+<!-- Copyright University of Westminster, all rights reserved
+     Authors: Anne-Gaelle Colom, Wendy Purdy -->
+<!-- updated 01/11/2021 -->
+		  
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Lessons: Arrays</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	
+
+	<!-- for upload only -->
+	
+	<script src="../jquery-3.7.1.min.js"></script>
+	<!--<script src="https://code.jquery.com/jquery-git.js"></script>-->
+
+
+<!-- for uploading only -->
+
+  	<link rel="stylesheet" href="../jquery-ui-1.12.0/jquery-ui.min.css">
+    <link href="../prism/prism.css" rel="stylesheet" />
+    <link href="../prism/prism-line-numbers.css" rel="stylesheet" />
+    <link href="../prism/prism-line-highlight.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../bootstrap-replacement.css">
+    <link rel="stylesheet" href="../glyphicons-replacement.css">
+
+<!-- Optional theme -->
+
+<!-- for upload only -->
+
+<link rel="stylesheet" href="../bootstrap-3.3.7/css/bootstrap-theme.min.css">
+     <script src="../jquery-ui-1.12.0/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="style.css" /> 
+
+<style>
+	.tab-pane label {
+		font-weight: 400;
+		padding-top: 10px;
+		padding-bottom: -10px;
+	}
+	.sortableTab {
+		list-style: none;
+		
+		-webkit-padding-start: 0px;
+	}
+
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+  color: #108040,
+  border-left: 1px solid #108040;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+  padding-left: 18px;
+  font-weight: bold;
+  color: #108040;
+  background-color: transparent;
+  border-left: 2px solid #108040;
+}
+.back-to-top:hover,
+.bs-docs-theme-toggle:hover {
+  color: #563d7c;
+  text-decoration: none;
+}
+
+.dropdown-menu>.active>a, 
+.dropdown-menu>.active>a:focus, 
+.dropdown-menu>.active>a:hover {
+  background-image: none;
+  background-color: #108040;
+}
+
+.nav-tabs > li.active > a {
+font-weight: 500;
+}
+
+
+
+table {
+  table-layout: fixed;
+  width: 400px;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+th {
+  padding-left:2px ;
+  padding-right:2px;
+  text-align: left;
+  width: 51px;
+}
+
+th, td {
+  border:1px solid black ;
+}
+
+tr  { 
+	height:30px; 
+  }
+
+</style>
+</head>
+  <body>
+  
+  <!-- Fixed navbar -->
+      <nav class="navbar navbar-default navbar-fixed-top navbar-lesson" >
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><img src="../images/westminster-logo.png" alt="Logo Unversity of Westminster" width="65%"></a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown active">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lessons <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="ifelse.html">if else</a></li>
+                  <li><a href="for.html">for loop</a></li>
+                  <li><a href="while.html">while loop</a></li>
+                  <li><a href="dowhile.html">do while loop</a></li>
+                  <li><a href="switch.html">switch case</a></li>
+                  <li><a href="functions.html">function calls</a></li>
+                  <li class="active lesson"><a href="arrays.html">arrays</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Videos <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="../Videos/ifelse.html">if else</a></li>
+                  <li><a href="../Videos/for.html">for loop</a></li>
+                  <li><a href="../Videos/while.html">while loop</a></li>
+                  <li><a href="../Videos/dowhile.html">do while loop</a></li>
+                  <li><a href="../Videos/switch.html">switch case</a></li>
+                  <li><a href="../Videos/functions.html">function calls</a></li>
+                  <li><a href="../Videos/arrays.html">arrays</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Code Visualiser <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="../codeVisAlpha.html?example=ifelse">if else</a></li>
+                  <li><a href="../codeVisAlpha.html?example=for">for loop</a></li>
+                  <li><a href="../codeVisAlpha.html?example=while">while loop</a></li>
+                  <li><a href="../codeVisAlpha.html?example=dowhile1">do while loop</a></li>
+                  <li><a href="../codeVisAlpha.html?example=switch1">switch case</a></li>
+                  <li><a href="../codeVisAlpha.html?example=functions">function calls</a></li>
+                  <li><a href="../codeVisAlpha.html?example=arrays">arrays</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Array Visualiser <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="../arrayVisualiser.html">Creation</a></li>
+                  <li><a href="#"></a></li>
+                  <li><a href="#"></a></li>
+                  <li><a href="#">Push</a></li>
+                  <li><a href="#">Pop</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+			  <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+            <li><a href="../About/aboutAlpha.html">About this App</a></li>
+          </ul>
+			  </li></ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+  
+  <main class="container language-javascript">
+  <div class="col-md-9" role="main"><h1>Arrays</h1>
+  <p>Note: This lesson covers <strong>JavaScript</strong> and <strong>Python</strong>.</p>
+  
+  <h2 id="Definition" class="group">Definition</h2>
+   <p>The basic structure to store several values in a sequence is called an <code>array</code> 
+in JavaScript and a <code>list</code> in Python. Both are used to hold multiple 
+elements under a single name.</p>
+    
+  <h2 id="Syntax" class="group">Syntax</h2>
+  <h3 class="subgroup" id="array-list">arrays/list</h3>
+  
+  <p> There are various ways of creating an array/list. </p>
+	<ul>
+	<li>Literal - syntax takes a list of elements separated by a comma and enclosed in square brackets.</li>  
+	<li>General - you can create an empty array/list and add the elements individually. </li> 
+ 	</ul>  
+ 
+ <!--
+  <p>A simple <code> function </code> definition: 
+  <a href="../codeVisAlpha.html?example=dowhile1" target="_blank" rel="noopener">
+   <span class="glyphicon glyphicon-export" aria-hidden="true"></span></a> </p>
+  -->
+
+  <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#jsCode" aria-controls="javaScriptCode1" role="tab" data-toggle="tab">JavaScript</a></li>
+     <!--
+	 <li role="presentation"><a href="#javaCode" aria-controls="javaCode1" role="tab" data-toggle="tab">Java</a></li>
+	 -->
+	<li role="presentation"><a href="#pythonCode" aria-controls="pythonCode1" role="tab" data-toggle="tab">Python</a></li>
+  </ul>
+      
+      <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="jsCode">
+	  <ol>
+	  <li>Literal
+      <pre class="line-numbers"><code class="language-javascript">const array_name = [element0, element1, element2,... elementN];</code></pre>
+	  </li>
+	  	  <li>General
+      <pre class="line-numbers"><code class="language-python">const array_name = [];
+array_name[0] = element0;
+array_name[1] = element1;
+array_name[2] = element2;
+...
+array_name[N] = elementN;</code></pre>
+</li>
+</ol>
+
+	<!--
+	<div class="alert alert-info" role="alert"><strong>
+	<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+	JavaScript Note:</strong>
+	</div>
+-->	
+</div>
+
+<!-- java example required -->
+<!--
+      <div role="tabpanel" class="tab-pane" id="javaCode">
+      <pre class="line-numbers"><code class="language-java">
+	    
+</code></pre>
+</div>
+-->
+      <div role="tabpanel" class="tab-pane" id="pythonCode">
+	 
+	  	  <ol>
+	  <li>Literal
+	  <pre class="line-numbers"><code class="language-python">list_name = [element0, element1, element2,... elementN]</code></pre>
+	  </li>
+	  	  <li>General
+      <pre class="line-numbers"><code class="language-python">list_name = []
+list_name[0] = element0
+list_name[1] = element1
+list_name[2] = element2
+... 
+list_name[N] = elementN</code></pre>
+	  </li>
+	  </ol>
+	 
+<!--
+	   <div class="alert alert-info" role="alert">
+      <strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+	Python Note: </strong> 
+	</div>
+-->
+  </div>
+  
+     </div>	
+
+	<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+Note: </strong>Reminder that this lesson covers similar structures - an <code>array</code> in JavaScript and a <code>list</code> in Python.
+</div>
+	  
+	  
+<h3 class="subgroup" id="index">Access / Change value by index</h3>
+
+<!--
+<p>A simple <code>if</code> statement has the following syntax: <a href="../codeVisAlpha.html?example=if" target="_blank" rel="noopener"><span class="glyphicon glyphicon-export" aria-hidden="true"></span></a>
+-->
+  <br>
+  <table>
+  <tr>
+  <th rowspan="2">marks</th><th>Value</th> <td>76</td> <td>34</td> <td>65</td> <td>25</td> <td>49</td> <td>57</td>
+  </tr>
+  <tr>
+  <th>Index</th> <td>0</td> <td>1</td> <td>2</td> <td>3</td> <td>4</td> <td>5</td>
+  </tr>
+  </table>
+ 
+ <ol>
+  <li>Create array/list - In our example below, we create an array/list named <code> marks</code> which has six elements.</li>
+  
+  <li>Access value by index - We can access a value by referring to its index number.  Indexes start at zero:
+  <ul>
+  <li>  <code>marks[0]</code> is the first value - 76.</li>
+  <li>  <code>marks[1]</code>is the second value - 34.</li>
+  <li>  <code>marks[5]</code>is the last value - 57.</li>
+  </ul>
+</li>
+
+<li>Change value by index - We can change a value by specifying the index number and the new value.  
+Our example selects index zero, <code>marks[0]</code>, to modify the first value in the list.</li>
+</ol>
+  
+  <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#jsCode1" aria-controls="javaScriptCode1" role="tab" data-toggle="tab">JavaScript</a></li>
+     <!--
+	 <li role="presentation"><a href="#javaCode1" aria-controls="javaCode1" role="tab" data-toggle="tab">Java</a></li>
+	 -->
+	<li role="presentation"><a href="#pythonCode1" aria-controls="pythonCode1" role="tab" data-toggle="tab">Python</a></li>
+  </ul>
+      
+      <div class="tab-content">	  
+      <div role="tabpanel" class="tab-pane active" id="jsCode1">
+	  <ol>
+	  <li>Create Array
+      <pre class="line-numbers"><code class="language-javascript">const marks = [76, 34, 65, 25, 49, 57];</code></pre>
+</li>
+
+	  <li>Access value by index
+      <pre class="line-numbers"><code class="language-javascript">alert(marks[0]);    // 76
+alert(marks[1]);    // 34</code></pre>
+	  </li>
+	  
+	  <li>Change value by index
+      <pre class="line-numbers"><code class="language-javascript">marks[0] = 80;    // [80, 34, 65, 25, 49, 57]
+</code></pre>
+	  </li>
+	  </ol>
+
+<div class="alert alert-warning" role="alert"><strong><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+Modern JavaScript Best Practice:</strong> We use <code>const</code> for arrays because <code>const</code> prevents reassigning the variable to a different array, but still allows you to modify the array's contents (add, remove, or change elements). This helps prevent bugs while keeping your array flexible.</div>
+
+<!--
+<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+  JavaScript Note:</strong>
+  </div>  
+ --> 
+  
+</div>
+
+
+<!-- java example required -->
+<!--
+      <div role="tabpanel" class="tab-pane" id="javaCode1">
+      <pre class="line-numbers"><code class="language-java">
+	    
+</code></pre>
+</div>
+-->
+
+
+      <div role="tabpanel" class="tab-pane" id="pythonCode1">
+
+	  <ol>
+	  <li>Create List 
+	  <pre class="line-numbers"><code class="language-python">marks = [76, 34, 65, 25, 49, 57]</code></pre>
+	  </li>
+	  	  <li>Access value by index
+      <pre class="line-numbers"><code class="language-python">print(marks[0])    # 76
+print(marks[1])    # 34</code></pre>
+	  </li>
+	  <li>Change value by index
+      <pre class="line-numbers"><code class="language-python">marks[0] = 80    # [80, 34, 65, 25, 49, 57]
+</code></pre>
+	  </li>
+	  </ol>
+
+<!--
+	   <div class="alert alert-info" role="alert">
+      <strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+  Python Note: </strong> 
+  </div>Change value by index
+ 
+  -->
+  </div>
+  
+     </div>	
+	   
+	
+
+<h3 class="subgroup" id="add">Adding end element</h3>
+
+<p>Each language has a built in method to add 
+an element to the end of the array/list.</p>
+
+<p>JavaScript uses <code>push()</code> and Python uses <code>append()</code>. </p>
+  
+  <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active">
+	  <a href="#jsCode3" aria-controls="javaScriptCode3" role="tab" data-toggle="tab">JavaScript</a>
+	  </li>
+   <!--
+   <li role="presentation"><a href="#javaCode3" aria-controls="javaCode1" role="tab" data-toggle="tab">Java</a></li>
+-->
+      <li role="presentation">
+	  <a href="#pythonCode3" aria-controls="pythonCode3" role="tab" data-toggle="tab">Python</a>
+	  </li>
+    </ul>  
+	  
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="jsCode3">
+      <pre class="line-numbers"><code class="language-javascript">const marks = [76, 34, 65, 25, 49, 57];
+marks.push(18);       // [76, 34, 65, 25, 49, 57, 18];
+marks.push(79, 31);   // [76, 34, 65, 25, 49, 57, 18, 79, 31];</code></pre>
+
+	<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+		JavaScript Note: </strong>
+		<ul>
+		<li>The JavaScript <code>push()</code> method adds 
+		new items to the end of an array and returns the new length.</li>
+		<li>The <code>push()</code> function can be used to append more than one 
+		value to an array in a single call: <code>marks.push(79, 31);</code> </li>
+		</ul>		
+		
+   </div>
+
+ </div>
+ 
+ <!-- 
+ Java example required
+ 
+  <div role="tabpanel" class="tab-pane" id="javaCode3">     
+  <pre class="line-numbers"><code class="language-java">
+  
+  </code></pre>
+
+<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" 
+    aria-hidden="true"></span>    Java Notes:</strong> 
+		</div> 
+</div>  
+-->  
+  
+    <div role="tabpanel" class="tab-pane" id="pythonCode3">
+      <pre class="line-numbers"><code class="language-python">marks = [76, 34, 65, 25, 49, 57]
+marks.append(18)    
+# [76, 34, 65, 25, 49, 57, 18]</code></pre>
+
+	<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+		Python Note: </strong> 
+	<ul>
+	<li>The Python <code>append()</code> method adds an item to the end of a list. The method takes a single argument.
+	</li>
+	<li>It differs from the JavaScript push() method as it does 
+	not return the new length and does not allow for adding multiple elements.	
+		</li>
+		</ul>
+		</div> 			
+    </div>
+
+</div>
+
+<!-- deleting value from end -->
+
+<h3 class="subgroup" id="delete">Removing end element</h3>
+
+<p>Each language has a built in method to remove an element from the end of the array/list.</p>
+  
+  <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active">
+	  <a href="#jsCode4" aria-controls="javaScriptCode4" role="tab" data-toggle="tab">JavaScript</a></li>
+   <!--
+   <li role="presentation"><a href="#javaCode4" aria-controls="javaCode1" role="tab" data-toggle="tab">Java</a></li>
+-->
+      <li role="presentation">
+	  <a href="#pythonCode4" aria-controls="pythonCode4" role="tab" data-toggle="tab">Python</a>
+	  </li>
+    </ul>  
+	  
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="jsCode4">
+
+      <pre class="line-numbers"><code class="language-javascript">const marks = [76, 34, 65, 25, 49, 57]
+// remove last value
+marks.pop();   // [76, 34, 65, 25, 49]</code></pre>
+
+	<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+		JavaScript Note: </strong>
+		
+		<ul>
+		<li>The <code>pop()</code> method removes the last value of an array and returns that value.</li>
+		<li>The JavaScript <code>pop()</code> method does not have any parameters and you cannot pass it an index (unlike Python pop()).</li>		
+		</ul>		
+		
+   </div>
+
+ </div>
+ 
+ <!-- 
+ Java example required
+ 
+  <div role="tabpanel" class="tab-pane" id="javaCode4">     
+  <pre class="line-numbers"><code class="language-java">
+  
+  </code></pre>
+
+<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" 
+    aria-hidden="true"></span>    Java Notes:</strong> 
+		</div> 
+</div>  
+-->  
+  
+    <div role="tabpanel" class="tab-pane" id="pythonCode4">
+
+      <pre class="line-numbers"><code class="language-python">marks = [76, 34, 65, 25, 49, 57]
+# remove last value
+marks.pop()    # [76, 34, 65, 25, 49] 
+#remove value at index 1
+marks.pop(1)   # [76, 65, 25, 49]</code></pre>
+
+	<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+		Python Note: </strong> 
+		<ul>
+		<li>
+		The Python <code>pop()</code> with an empty parameter will remove the last value. </li>
+		<li>Returns the element removed.</li>
+		<li>The Python <code>pop()</code> method can take an optional single argument to specify the index of the value to remove.
+		</li>
+		</ul>		
+				
+	</div> 			
+    </div>
+
+</div>
+
+ <h3 class="subgroup" id="length">Length of array/list</h3>
+
+<p>The example code below shows how the number of elements in the array/list can be determined. </p>
+<p>This example also shows that a JavaScript <code>array</code> and Python <code>list</code> can contain elements of different types.</p>
+  
+  <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active">
+	  <a href="#jsCode2" aria-controls="javaScriptCode1" role="tab" data-toggle="tab">JavaScript</a></li>
+  
+  <!--
+   <li role="presentation"><a href="#javaCode2" aria-controls="javaCode1" role="tab" data-toggle="tab">Java</a></li>
+-->
+      <li role="presentation">
+	  <a href="#pythonCode2" aria-controls="pythonCode2" role="tab" data-toggle="tab">Python</a>
+	  </li>
+    </ul>  
+	  
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="jsCode2">
+ 
+  <pre class="line-numbers"><code class="language-javascript">const results = ["Exam", 76, 34, 65, 25, 49, 57];
+alert(results.length);     // 7</code></pre>
+
+<!--
+	<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+		JavaScript Note: </strong> 
+    </div>
+-->
+ </div>
+ 
+ <!-- 
+ Java example required
+ 
+  <div role="tabpanel" class="tab-pane" id="javaCode2">     
+  <pre class="line-numbers"><code class="language-java">
+  
+  </code></pre>
+
+<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" 
+    aria-hidden="true"></span>    Java Notes:</strong> 
+		</div> 
+</div>  
+-->  
+  
+  
+    <div role="tabpanel" class="tab-pane" id="pythonCode2">
+	
+	<pre class="line-numbers"><code class="language-python">results = ["Exam", 76, 34, 65, 25, 49, 57]
+print(len(results))         # 7</code></pre>
+
+	<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+		Python Note: </strong> The Python <code>len()</code> function can be used to determine the number of items found 
+		in the list.  The list is passed as the argument.
+		</div> 			
+    </div>
+
+</div>
+
+
+
+ </div> 
+
+  <div class="row">
+      <!--Nav Bar -->
+      
+      <nav class="col-md-3 bs-docs-sidebar hidden-print hidden-sm hidden-xs">
+          <ul id="sidebar" class="nav nav-stacked">
+              <li>
+                  <a href="#Definition">Definition</a>
+              </li>
+              <li>
+                  <a href="#Syntax">Syntax</a>
+				  <!--
+                  <ul class="nav nav-stacked">
+                      <li><a href="#array-list">array/list</a></li>
+				  </ul>
+				  -->
+			  </li>
+			  <!-- <li> -->
+				<!--  <ul class="nav nav-stacked"> -->
+					  <li><a href="#index">Access / Change value by index</a></li>
+					  <li><a href="#add">Adding end element</a></li>
+					  <li><a href="#delete">Removing end element</a></li>
+					  <li><a href="#length">Length of array/list</a></li>
+                <!--  </ul>  -->
+              <!-- </li>  -->
+              
+			  <!--
+			  <li>
+                  <a href="#Examples">Examples</a>
+                  <ul class="nav nav-stacked">
+                      <li><a href="#Example1">Example 1</a></li>
+                      <li><a href="#Example2">Example 2</a></li> 
+					  <li><a href="#Example3">Example 3</a></li>
+                  </ul>
+              </li>  -->
+          </ul>
+      </nav>
+  </div>
+           
+  </main>
+  <nav class="navbar navbar-default no-margin-bottom">
+  <div class="container">
+  <p class="navbar-text navbar-right">&copy; Copyright 2016-2026 <a href="https://www.westminster.ac.uk" class="navbar-link">University of Westminster</a></p><p class="navbar-text navbar-left"><a href="../About/accessibilityStatement.html">Accessibility Statement</a></p>
+  </div>
+  </nav>
+  
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="../bootstrap-replacement.js"></script>
+  <script src="../tabs-replacement.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+ 
+
+<!-- for uploading only -->
+
+ <script src="../prism/prism.js"></script>
+  <script src="../prism/prism-line-numbers.js"></script>
+  <script src="../prism/prism-line-highlight.js"></script>
+  <script src="lessons.js"></script>
+
+
+  <script>
+  $('body').scrollspy({
+    target: '.bs-docs-sidebar',
+    offset: 60
+  });
+  $("#sidebar").affix({
+    offset: {
+      top: 80
+    }
+  });
+  </script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+   
+    ga('create', 'UA-90995417-1', 'auto');
+    ga('send', 'pageview');
+   
+  </script>
+  </body>
+</html>

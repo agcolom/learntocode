@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="refresh" content="0;URL='codeVisAlpha.html'">
+<title>Code Visualiser</title>
+<script src="jquery-3.7.1.min.js"></script>
+
+
+<!-- Optional theme -->
+
+  	<link rel="stylesheet" href="jquery-ui-1.12.0/jquery-ui.min.css">
+  <link rel="stylesheet" href="bootstrap-replacement.css">
+<style>
+
+/* ---- Now styles for the site ---- */
+
+body {
+	padding-top: 70px;
+	padding-bottom: 70px;
+	overflow:scroll;
+	font-family: 'Open Sans', sans-serif;
+	height: 800px;
+	font-weight: 200;
+	font-size: 16px;
+}
+
+h1 {
+	font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+	text-align: center;
+	margin-top: 200px;
+	font-size: 60px;
+}
+h2, h4, form {
+	font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+	text-align: center;
+}
+header {
+	border-top: 4px solid #800080;
+	width: 100%;
+}
+
+.layout-right-content {
+	width: 100%;
+}
+
+nav.navbar-codeViz {
+	border-top: 4px solid #800080;
+}
+
+pre code {
+	font-size: 16px;
+}
+
+.dropdown-menu>.active>a,
+.dropdown-menu>.active>a:focus,
+.dropdown-menu>.active>a:hover {
+	background-image: none;
+	background-color: #800080;
+}
+
+nav.no-margin-bottom {
+	margin-bottom: 0;
+	border-radius: 0;
+}
+
+#slider {
+	width: auto;
+	display: inline;
+}
+
+#files {
+	display: inline;
+}
+
+.left {
+    /*min-width: 580px;*/
+    float: left;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.right {
+	/*min-width: 655px;*/
+    float: right;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#files {
+	width: 220px;
+}
+</style>
+</head>
+<body>
+<!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top navbar-codeViz" >
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><img src="westminster-logo.png" width="65%"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            
+          </ul>
+          
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+<div id="main">
+ <main><h1>Code Visualiser</h1>
+  <br><br>
+<h2>You are being redirected...</h2>
+<h4>Please follow <a href="https://twitter.com/agcolom">@agcolom</a> for updates and to report issues</h4>
+
+</main>
+</div>
+<script src="bootstrap-replacement.js"></script>
+<script src="tabs-replacement.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ 
+  ga('create', 'UA-90995417-1', 'auto');
+  ga('send', 'pageview');
+ 
+</script>
+</body>
+</html>

@@ -1,0 +1,541 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Lessons: For</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="../jquery-3.7.1.min.js"></script>
+	<!--<script src="https://code.jquery.com/jquery-git.js"></script>-->
+
+  	<link rel="stylesheet" href="../jquery-ui-1.12.0/jquery-ui.min.css">
+  <link rel="stylesheet" href="../bootstrap-replacement.css">
+    <link href="../prism/prism.css" rel="stylesheet" />
+    <link href="../prism/prism-line-numbers.css" rel="stylesheet" />
+    <link href="../prism/prism-line-highlight.css" rel="stylesheet" />
+    
+
+<!-- Optional theme -->
+
+     <script src="../jquery-ui-1.12.0/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="style.css" /> 
+<style>
+	.tab-pane label {
+		font-weight: 400;
+		padding-top: 10px;
+		padding-bottom: -10px;
+	}
+	.sortableTab {
+		list-style: none;
+		
+		-webkit-padding-start: 0px;
+	}
+
+.bs-docs-sidebar .nav > li > a:hover,
+.bs-docs-sidebar .nav > li > a:focus {
+  color: #108040,
+  border-left: 1px solid #108040;
+}
+.bs-docs-sidebar .nav > .active > a,
+.bs-docs-sidebar .nav > .active:hover > a,
+.bs-docs-sidebar .nav > .active:focus > a {
+  padding-left: 18px;
+  font-weight: bold;
+  color: #108040;
+  background-color: transparent;
+  border-left: 2px solid #108040;
+}
+.back-to-top:hover,
+.bs-docs-theme-toggle:hover {
+  color: #563d7c;
+  text-decoration: none;
+}
+
+.dropdown-menu>.active>a, 
+.dropdown-menu>.active>a:focus, 
+.dropdown-menu>.active>a:hover {
+  background-image: none;
+  background-color: #108040;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top navbar-lesson" >
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><img src="../images/westminster-logo.png" width="65%"></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown active">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lessons <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="ifelse.html">if else</a></li>
+              	<li class="active lesson"><a href="for.html">for loop</a></li>
+              	<li><a href="while.html">while loop</a></li>
+              	<li><a href="dowhile.html">do while loop</a></li>
+              	<li><a href="switch.html">switch case</a></li>
+              	<li><a href="functions.html">function calls</a></li>
+              	<li><a href="arrays.html">arrays</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Videos <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="../Videos/ifelse.html">if else</a></li>
+                <li><a href="../Videos/for.html">for loop</a></li>
+                <li><a href="../Videos/while.html">while loop</a></li>
+                <li><a href="../Videos/dowhile.html">do while loop</a></li>
+                <li><a href="../Videos/switch.html">switch case</a></li>
+                <li><a href="../Videos/functions.html">function calls</a></li>
+                <li><a href="../Videos/arrays.html">arrays</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Code Visualiser <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="../codeVisAlpha.php">if else</a></li>
+              	<li><a href="#">for loop</a></li>
+              	<li><a href="#">while loop</a></li>
+              	<li><a href="#">do while loop</a></li>
+              	<li><a href="#">switch case</a></li>
+              	<li><a href="#">function calls</a></li>
+              	<li><a href="#">arrays</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Array Visualiser <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="../arrayVisualiser.php">Creation</a></li>
+             	<li><a href="#"></a></li>
+              	<li><a href="#"></a></li>
+              	<li><a href="#">Push</a></li>
+              	<li><a href="#">Pop</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../About/about.html">About this App</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+
+<main class="container language-javascript">
+<div class="col-md-9" role="main"><h1>for</h1>
+<h2 id="Definition" class="group">Definition</h2>
+<p>The <code>for</code> statement is used to create a loop that is composed of three optional expressions in parentheses and separated by semicolons that execute a block of code as long as (while) the test condition is true. The test condition is evaluted at the start of the loop.</p>
+<h2 id="Syntax" class="group">Syntax</h2>
+<h3 class="subgroup" id="for">for</h3>
+<p>A simple <code>for</code> statement has the following syntax: 
+<a href="../codeVisAlpha.php?example=for" target="_blank" rel="noopener">
+ <span class="glyphicon glyphicon-export" aria-hidden="true"></span></a></p>
+ 
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#jsCode1" aria-controls="javaScriptCode1" role="tab" data-toggle="tab">JavaScript</a></li>
+    <li role="presentation"><a href="#javaCode1" aria-controls="javaCode1" role="tab" data-toggle="tab">Java</a></li>
+    <li role="presentation"><a href="#pythonCode1" aria-controls="pythonCode1" role="tab" data-toggle="tab">Python</a></li>
+  </ul>
+	<div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="jsCode1">
+    <pre class="line-numbers"><code class="language-javascript">for ( initialisation; condition; final_expression ) {
+    block;
+}</code></pre>
+
+	<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+Note: </strong>JavaScript and Java use a similar syntax for the 'for loop'.
+</div>
+<ul class="list">
+	<li>The <strong>initialisation</strong> is an expression or variable declaration. It is typically used to initialize a counter variable. </li>
+<li>The <strong>condition</strong> is an expression that is evaluated at the start of each pass through the loop, and which evaluates to either <code>true</code> or <code>false</code>.<br> The loop will stop executing when the condition becomes <code>false</code>.</li>
+	<li>The <strong>final_expression</strong> is an expression that is evaluated at the end of each loop iteration. This occurs before the next evaluation of condition. It is typically used to update or increment the counter variable.</li>
+<li>The <strong>block</strong> is a block of code that gets executed while the <strong>condition</strong> evaluates to <code>true</code>.</li>
+</ul>
+<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span></strong> 
+It is important to note that if new variables are declared as part of the for loop initialisation, these will not be local to the loop. Instead, they are in the same scope as the for loop. 
+</div> 
+</div>
+    <div role="tabpanel" class="tab-pane" id="javaCode1">
+	<pre class="line-numbers"><code class="language-java">for ( initialisation; condition; final_expression ) {
+    block;
+}</code></pre>
+
+	<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+Note: </strong>Java and JavaScript use a similar syntax for the 'for loop'.
+</div>
+
+<ul class="list">
+	<li>The <strong>initialisation</strong> is an expression or variable declaration. It is typically used to initialize a counter variable. </li>
+	<li>The <strong>condition</strong> is an expression that is evaluated at the start of each pass through the loop, and which evaluates to either <code>true</code> or <code>false</code>.<br> The loop will stop executing when the condition becomes <code>false</code>.</li>
+	<li>The <strong>final_expression</strong> is an expression that is evaluated at the end of each loop iteration. This occurs before the next evaluation of condition. It is typically used to update or increment the counter variable.</li>
+<li>The <strong>block</strong> is a block of code that gets executed while the <strong>condition</strong> evaluates to <code>true</code>.</li>
+</ul>
+
+
+<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true">
+</span></strong> 
+It is important to note that if new variables are declared as part of the for loop initialisation, 
+these will not be local to the loop. Instead, they are in the same scope as the for loop.</div> 
+</div> 
+
+
+    <div role="tabpanel" class="tab-pane" id="pythonCode1">
+	<pre class="line-numbers"><code class="language-python">for [iterating variable] in [sequence]:
+    block 
+
+</code></pre>
+
+	<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+Note: </strong>The Python 'for loop' syntax differs from that used in JavaScript and Java. The syntax will be 
+examined further in the python examples that follow.</div>
+</div>
+</div>
+<h2 class="group" id="Examples">Examples</h2>
+<h3 class="subgroup" id="Example1">Example 1: Multiplication Tables</h3>
+
+<!-- start of example 1 -->
+<p>Imagine that you want to print out the multiplication table for a given number.  E.g., the times table for 6:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<code>1 times 6 = 6</code><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<code>2 times 6 = 12</code><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<code>3 times 6 = 18</code><br>
+&nbsp;&nbsp;&nbsp;&nbsp;etc.<br>
+</p>
+
+<p>Let's look at some code to achieve this. </p>
+<ol>
+<li>We'll use a <code>for</code> loop and a variable <code>timesLine</code> will act as our counter. We want to go through the loop 12 times, so we will 
+initialise <code>timesLine</code> to 1, and loop while it is less or equal to 12, and increment it by one at the end 
+of each pass through the loop.
+
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#jsCode5" aria-controls="javaScriptCode1" role="tab" data-toggle="tab">JavaScript</a></li>
+    <li role="presentation"><a href="#javaCode5" aria-controls="javaCode1" role="tab" data-toggle="tab">Java</a></li>
+    <li role="presentation"><a href="#pythonCode5" aria-controls="pythonCode1" role="tab" data-toggle="tab">Python</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="jsCode5">
+
+<pre class="line-numbers"><code class="language-javascript">// Repeat 1 to 12 times
+for ( var timesLine = 1; timesLine <= 12; timesLine++ ) {
+    // Do something here
+}</code></pre>
+
+</div>
+    <div role="tabpanel" class="tab-pane" id="javaCode5">
+
+<pre class="line-numbers"><code class="language-java">// Repeat 1 to 12 times
+for ( int timesLine = 1; timesLine <= 12; timesLine++ ) {
+    // Do something here
+}</code></pre>
+
+</div>
+
+    <div role="tabpanel" class="tab-pane" id="pythonCode5">
+	<pre class="line-numbers"><code class="language-python"># Repeat 1 to 12 times
+for timesLine in range(1,13) :
+    # Do something here
+</code></pre>
+	<div class="alert alert-info" role="alert">
+	<p><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+Python Note: </strong>The Python range() function is used to create a sequence of integers. Here we use two parameters <code>range(1, 13)</code> to specify a sequence with a starting point 
+of 1 and a stopping point of 12. Note that the end number (13 in this case) is never part of the generated sequence. 
+</p>
+</div>
+</div>
+
+</div> <!-- added -->
+</li>
+</ol>
+
+<ol start="2">
+<li>We will get the required number for the multiplication table from the user and store it in the <code>timesTable</code> variable.
+
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#jsCode6" aria-controls="javaScriptCode1" role="tab" data-toggle="tab">JavaScript</a></li>
+    <li role="presentation"><a href="#javaCode6" aria-controls="javaCode1" role="tab" data-toggle="tab">Java</a></li>
+    <li role="presentation"><a href="#pythonCode6" aria-controls="pythonCode1" role="tab" data-toggle="tab">Python</a></li>
+  </ul>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="jsCode6">
+<pre class="line-numbers"><code class="language-javascript">var timesTable;       // the times table value chosen
+     
+timesTable = prompt( "Enter the times table required: " );
+	     
+// Repeat 1 to 12 times
+for ( var timesLine = 1; timesLine <= 12; timesLine++ ) {
+    document.write(timesLine + " times " + timesTable + " = ");
+    document.write((timesLine * timesTable) + "&lt;br>");  // the answer
+}</code></pre>
+
+<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" 
+aria-hidden="true"></span>JavaScript Note:</strong> As in this example, the mark is entered in a text field, the data type will be a <em>string</em>. However, we want to convert it to a number (<em>integer</em>) using the <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/parseInt" target="_blank" rel="noopener"><code>parseInt()</code> <span class="glyphicon glyphicon-education" aria-hidden="true"></span></a> function.</div>
+
+</div>
+    <div role="tabpanel" class="tab-pane" id="javaCode6">
+<pre class="line-numbers"><code class="language-java">int timesTable;         // the times table value chosen
+     
+Scanner input = new Scanner(System.in);
+System.out.println("Enter the times table required: ");
+timesTable = input.nextInt();
+
+// Repeat 1 to 12 times
+for ( int timesLine = 1; timesLine <= 12; timesLine++ ) {
+    System.out.print(timesLine + " times " + timesTable + " = ");
+    System.out.println((timesLine * timesTable));  // the answer
+}</code></pre>
+</div>
+    <div role="tabpanel" class="tab-pane" id="pythonCode6">
+	<pre class="line-numbers"><code class="language-python">timesTable = int(input( 'Enter the mark for the times table' ))
+	
+for timesLine in range(1,13) :
+    print( timesLine, " times ", timesTable, " = ", timesLine * timesTable )  </code></pre>
+	<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+Python Note: </strong>Method input() produces string values so we convert to an integer with the int() method. 
+</div>
+</div>
+
+</div> <!-- added -->
+
+</li>
+</ol>
+<!-- end of example 1 -->
+
+<br>
+<h3 class="subgroup" id="Example2">Example 2: Year Average</h3>
+<p>Imagine that you want to calculate the year average (in this case, a module is a course component, as university students would know it). The year is composed of 120 credits. For the sake of simplicity, we'll consider that the year is composed of six 20-credit modules.</p>
+
+<p>Let's create the code for this, one step at a time. </p>
+
+<div class="alert alert-info" role="alert"><strong>Note:</strong> there are many solutions to this problem and it is important that you write code that you feel comfortable with and that you tackle the problem using a logic that feels natural to you.</div>
+<ol>
+<li>We'll use a <code>for</code> loop and the variable that will hold the number of marks entered: 
+<code>marksEntered</code> will act as our counter. We want to go through the loop 6 times, so we will 
+initialise <code>marksEntered</code> to 0, stop when it's less than 6, and increment it by one at the end 
+of each pass through the loop.
+
+
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#jsCode2" aria-controls="javaScriptCode1" role="tab" data-toggle="tab">JavaScript</a></li>
+    <li role="presentation"><a href="#javaCode2" aria-controls="javaCode1" role="tab" data-toggle="tab">Java</a></li>
+    <li role="presentation"><a href="#pythonCode2" aria-controls="pythonCode1" role="tab" data-toggle="tab">Python</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="jsCode2">
+
+<pre class="line-numbers"><code class="language-javascript">for ( var marksEntered = 0; marksEntered < 6; marksEntered++ ) {
+    // Do something here
+}</code></pre>
+
+</div>
+    <div role="tabpanel" class="tab-pane" id="javaCode2">
+
+<pre class="line-numbers"><code class="language-java">for ( int marksEntered = 0; marksEntered < 6; marksEntered++ ) {
+    // Do something here
+}</code></pre>
+
+</div>
+
+    <div role="tabpanel" class="tab-pane" id="pythonCode2">
+	<pre class="line-numbers"><code class="language-python">for marksEntered in range(6) :
+    # Do something here
+</code></pre>
+
+	<div class="alert alert-info" role="alert"><p><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+Python Note: </strong>The Python range() function is used to create a sequence of integers. Here we use <code>range(6)</code> with one parameter.  This generates a sequence automatically starting at zero. 
+The stopping point will be 5 as the end number (6 in this case) is never part of the 
+generated sequence.</p>
+</div>
+</div>
+
+</div> <!-- added -->
+</li>
+</ol>
+
+<ol start="2">
+<li>We'll keep track of the marks entered by storing the new mark entered in the <code>moduleMark</code> variable and the sum of all the marks entered into the <code>sumMarksEntered</code> variable.
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#jsCode3" aria-controls="javaScriptCode1" role="tab" data-toggle="tab">JavaScript</a></li>
+    <li role="presentation"><a href="#javaCode3" aria-controls="javaCode1" role="tab" data-toggle="tab">Java</a></li>
+    <li role="presentation"><a href="#pythonCode3" aria-controls="pythonCode1" role="tab" data-toggle="tab">Python</a></li>
+  </ul>
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="jsCode3">
+<pre class="line-numbers"><code class="language-javascript">var sumMarksEntered = 0, 
+    moduleMark = 0;
+
+for ( var marksEntered = 0; marksEntered < 6; marksEntered++ ) {
+    moduleMark = prompt( "Enter mark for module number " + ( marksEntered + 1 ) );
+    sumMarksEntered = sumMarksEntered + parseInt( moduleMark );
+}</code></pre>
+
+<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" 
+aria-hidden="true"></span>JavaScript Note:</strong> As in this example, the mark is entered in a text field, the data type will be a <em>string</em>. However, we want to convert it to a number (<em>integer</em>) using the <a href="https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/parseInt" target="_blank" rel="noopener"><code>parseInt()</code> <span class="glyphicon glyphicon-education" aria-hidden="true"></span></a> function.</div>
+
+</div>
+    <div role="tabpanel" class="tab-pane" id="javaCode3">
+<pre class="line-numbers"><code class="language-java">int sumMarksEntered = 0, 
+    moduleMark;
+Scanner sc=new Scanner(System.in);
+
+for ( int marksEntered = 0; marksEntered < 6; marksEntered++ ) {
+    System.out.print ("Enter mark for module number " + ( marksEntered + 1 ) );
+    moduleMark = sc.nextInt(); 
+    sumMarksEntered = sumMarksEntered + moduleMark;
+}</code></pre>
+</div>
+    <div role="tabpanel" class="tab-pane" id="pythonCode3">
+	<pre class="line-numbers"><code class="language-python">sumMarksEntered = 0 
+moduleMark = 0
+
+for marksEntered in range(6) :
+    moduleMark = input( 'Enter mark for module number ' + str(marksEntered + 1) )
+    sumMarksEntered = sumMarksEntered + int( moduleMark)
+	</code></pre>
+	<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+Python Note: </strong>Method input() produces string values so we convert to an integer with the int() method.
+</div>
+</div>
+</div> <!-- added -->
+</li>
+</ol>
+
+<ol start="3">
+<li>Finally, once the user has entered the 6 marks and we come out of the for loop, we'll calculate the year average by dividing the sum of all the marks entered (<code>sumMarksEntered</code>) by 6. We will use the <code>yearAverage</code> variable for this, and will display the output in a popup window.</li>
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#jsCode4" aria-controls="javaScriptCode1" role="tab" data-toggle="tab">JavaScript</a></li>
+    <li role="presentation"><a href="#javaCode4" aria-controls="javaCode1" role="tab" data-toggle="tab">Java</a></li>
+    <li role="presentation"><a href="#pythonCode4" aria-controls="pythonCode1" role="tab" data-toggle="tab">Python</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="jsCode4">
+
+<pre class="line-numbers"><code class="language-javascript">var sumMarksEntered = 0, 
+    moduleMark = 0;
+    yearAverage = 0;
+    
+for ( var marksEntered = 0; marksEntered < 6; marksEntered++ ) {
+    moduleMark = prompt( "Enter mark for module number " + ( marksEntered + 1 ) );
+    sumMarksEntered = sumMarksEntered + parseInt( moduleMark );
+}
+
+yearAverage = sumMarksEntered / 6;
+alert( "Your year average is " + yearAverage );</code></pre>
+
+</div>
+    <div role="tabpanel" class="tab-pane" id="javaCode4">
+
+<pre class="line-numbers"><code class="language-java">int sumMarksEntered = 0, 
+    moduleMark;
+double yearAverage;
+Scanner sc=new Scanner(System.in);  
+
+for ( int marksEntered = 0; marksEntered < 6; marksEntered++ ) {
+    System.out.print ("Enter mark for module number " + ( marksEntered + 1 ) );
+    moduleMark = sc.nextInt(); 
+    sumMarksEntered = sumMarksEntered + moduleMark;
+}
+
+yearAverage = sumMarksEntered / 6.0;
+System.out.println( "Your year average is " + yearAverage );
+</code></pre>
+
+<div class="alert alert-info" role="alert"><strong><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span> 
+Java Note: </strong>6.0 (sumMarksEntered  /  6.0) required to force the result into a double
+</div>
+
+</div>
+ 
+    <div role="tabpanel" class="tab-pane" id="pythonCode4">
+	<pre class="line-numbers"><code class="language-python">sumMarksEntered = 0 
+moduleMark = 0
+
+for marksEntered in range(6) :
+    moduleMark = input( 'Enter mark for module number ' + str(marksEntered + 1) )
+    sumMarksEntered = sumMarksEntered + int( moduleMark)
+    
+yearAverage = sumMarksEntered / 6
+print( "Your year average is ", yearAverage )
+</code></pre>
+</div>  
+</div> <!-- added -->
+</ol>
+<br><br>
+To get a good understanding of the logic developed here and the <code>for</code> loop structure, <a href="../codeVisAlpha.php?example=forExample2" target="_blank" rel="noopener">view this in the Code Visualiser <span class="glyphicon glyphicon-export" aria-hidden="true"></span></a>, or play with the code below (press the "Run Code" button to run the code):
+<a class="jsbin-embed" href="https://jsbin.com/reweye/edit?html,output">JS Bin on jsbin.com</a><script src="https://static.jsbin.com/js/embed.min.js?3.39.14"></script>.
+
+</div>
+<div class="row">
+    <!--Nav Bar -->
+    
+    <nav class="col-md-3 bs-docs-sidebar hidden-print hidden-sm hidden-xs">
+        <ul id="sidebar" class="nav nav-stacked">
+            <li>
+                <a href="#Definition">Definition</a>
+            </li>
+            <li>
+                <a href="#Syntax">Syntax</a>
+                <ul class="nav nav-stacked">
+                    <li><a href="#for">for</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#Examples">Examples</a>
+                <ul class="nav nav-stacked">
+                    <li><a href="#Example1">Example 1</a></li>
+                    <li><a href="#Example2">Example 2</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</div>
+</main>
+<nav class="navbar navbar-default no-margin-bottom">
+<div class="container">
+<p class="navbar-text navbar-right">&copy; Copyright 2016-2018 <a href="https://www.westminster.ac.uk" class="navbar-link">University of Westminster</a></p>
+</div>
+</nav>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="../bootstrap-replacement.js"></script>
+<script src="../tabs-replacement.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
+<script src="../prism/prism.js"></script>
+<script src="../prism/prism-line-numbers.js"></script>
+<script src="../prism/prism-line-highlight.js"></script>
+<script src="lessons.js"></script>
+<script>
+$('body').scrollspy({
+  target: '.bs-docs-sidebar',
+  offset: 60
+});
+$("#sidebar").affix({
+  offset: {
+    top: 80
+  }
+});
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ 
+  ga('create', 'UA-90995417-1', 'auto');
+  ga('send', 'pageview');
+ 
+</script>
+</body>
+</html>

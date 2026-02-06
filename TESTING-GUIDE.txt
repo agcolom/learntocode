@@ -1,0 +1,70 @@
+=============================================================================
+QUICK TESTING GUIDE - LearnToCode Bootstrap Removal
+=============================================================================
+
+HOW TO TEST YOUR SITE:
+
+1. OPEN IN A WEB BROWSER
+   - Navigate to your website (e.g., http://localhost/learntocode.westminster.ac.uk/)
+   - Or open index.php or codeVisAlpha.php directly
+
+2. OPEN BROWSER CONSOLE
+   - Press F12 (Windows/Linux) or Cmd+Option+I (Mac)
+   - Click the "Console" tab
+   - Look for any RED error messages
+
+3. TEST THESE KEY FEATURES:
+
+   Desktop (full width browser):
+   ✓ Top navigation bar displays correctly
+   ✓ Click "Lessons" - dropdown menu appears
+   ✓ Click "Videos" - dropdown menu appears
+   ✓ Click "Code Visualiser" - dropdown menu appears
+   ✓ Click outside dropdown - menu closes
+   ✓ Click a link in dropdown - navigates to page
+
+   Code Visualiser page (codeVisAlpha.php):
+   ✓ Page loads without errors
+   ✓ Can type code in the editor
+   ✓ Theme selector works
+   ✓ Language selector works
+   ✓ Can drag the control panel
+   ✓ SVG visualization appears
+   ✓ Pan/zoom works on the visualization
+
+   Lessons page (Lessons/for.html):
+   ✓ JavaScript/Java/Python tabs switch when clicked
+   ✓ "Compare" tab appears and works
+   ✓ Checkboxes show/hide code sections
+   ✓ Can drag code sections to reorder
+
+   Mobile (resize browser to < 768px wide or use phone):
+   ✓ Hamburger menu icon (☰) appears in top right
+   ✓ Click hamburger - menu slides down
+   ✓ Click hamburger again - menu closes
+   ✓ Dropdowns work in mobile menu
+
+4. WHAT SUCCESS LOOKS LIKE:
+   - No errors in browser console
+   - Everything looks the same as before
+   - All buttons and menus work
+   - Mobile menu works on small screens
+
+5. IF YOU FIND ISSUES:
+   - Note which page has the problem
+   - Note what you were doing when it happened
+   - Check the browser console for error messages
+   - You can rollback using instructions in UPGRADE-COMPLETE.md
+
+=============================================================================
+CRITICAL PAGES TO TEST:
+=============================================================================
+1. codeVisAlpha.php (main code visualizer)
+2. Lessons/for.html (lesson with tabs)
+3. Lessons/ifelse.html (another lesson page)
+4. About/about.html (about page)
+5. index.php (entry page)
+
+Test on at least 2 browsers: Chrome, Firefox, Safari, or Edge
+
+=============================================================================

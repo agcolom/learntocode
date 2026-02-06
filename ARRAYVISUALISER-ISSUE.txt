@@ -1,0 +1,37 @@
+=============================================================================
+ARRAY VISUALISER - MISSING FILES
+=============================================================================
+
+STATUS: arrayVisualiser.html cannot function - missing JavaScript files
+
+ISSUES FOUND:
+1. Missing JavaScript file with generateArrayChart() function
+   - Likely named: concatArrayVis.js or arrayVis.js
+   - Should be in dest/ folder
+
+2. jquery.panzoom v2.0.5 incompatible with jQuery 3.7.1
+   - Panzoom is from 2016
+   - Needs upgrade or replacement
+
+FIXES APPLIED:
+✓ Fixed syntax error (< <script → <script)
+✓ Updated jQuery references
+✓ Updated Bootstrap references
+
+STILL NEEDED FROM SERVER:
+□ Array visualizer JavaScript file(s)
+□ Any array-specific CSS files
+□ Updated panzoom library (or we can use alternative)
+
+TEMPORARY SOLUTION:
+The arrayVisualiser.html file exists but is not functional.
+You'll need to get the missing files via SFTP from your production server.
+
+FILES TO GET:
+- dest/concatArrayVis.js (or similar)
+- Any arrayVis*.js files
+- Any arrayVis*.css files
+
+Once you have these files, upload them and the arrayVisualiser should work.
+
+=============================================================================

@@ -1,0 +1,125 @@
+=============================================================================
+NAVIGATION LINKS & ACTIVE CLASSES - VERIFICATION COMPLETE ✓
+=============================================================================
+
+All links and active classes have been verified and corrected.
+
+MAIN PAGES:
+-----------
+✓ codeVisAlpha.html
+  - Active: "Code Visualiser" dropdown
+  - Links to: Lessons, Videos, arrayVisualiser.html, About
+
+✓ arrayVisualiser.html
+  - Active: "Array Visualiser" dropdown
+  - Links to: Lessons, Videos, codeVisAlpha.html, About
+
+✓ Lessons/*.html (for.html, while.html, ifelse.html, etc.)
+  - Active: "Lessons" dropdown + specific lesson item
+  - Links to: Other lessons, Videos, codeVisAlpha.html, arrayVisualiser.html, About
+
+✓ About/about.html & aboutAlpha.html
+  - Active: "About this App" link
+  - Links to: Lessons, Videos, codeVisAlpha.html, arrayVisualiser.html
+
+✓ Videos/ifelse.html
+  - Active: "Videos" dropdown
+  - Links to: Lessons, other Videos, codeVisAlpha.html, arrayVisualiser.html, About
+
+LINK STRUCTURE:
+---------------
+
+From Root (codeVisAlpha.html, arrayVisualiser.html):
+  Lessons/       → Lessons/for.html, Lessons/while.html, etc.
+  Videos/        → Videos/ifelse.html, etc.
+  About/         → About/about.html
+  Each other     → codeVisAlpha.html ↔ arrayVisualiser.html
+
+From Lessons/ subdirectory:
+  Other lessons  → ifelse.html, for.html (relative)
+  Videos/        → ../Videos/ifelse.html (up one level)
+  Code Vis       → ../codeVisAlpha.html (up one level)
+  Array Vis      → ../arrayVisualiser.html (up one level)
+  About          → ../About/about.html (up one level)
+
+From About/ subdirectory:
+  Lessons/       → ../Lessons/for.html (up one level)
+  Videos/        → ../Videos/ifelse.html (up one level)
+  Code Vis       → ../codeVisAlpha.html (up one level)
+  Array Vis      → ../arrayVisualiser.html (up one level)
+
+From Videos/ subdirectory:
+  Lessons/       → ../Lessons/for.html (up one level)
+  Code Vis       → ../codeVisAlpha.html (up one level)
+  Array Vis      → ../arrayVisualiser.html (up one level)
+  About          → ../About/about.html (up one level)
+
+ACTIVE CLASS PATTERNS:
+----------------------
+
+codeVisAlpha.html:
+  <li class="dropdown active"> Code Visualiser
+    <li class="active codeViz"> if else (current page)
+
+arrayVisualiser.html:
+  <li class="dropdown active"> Array Visualiser
+    <li class="active arrayViz"> Creation (current page)
+
+Lessons/for.html:
+  <li class="dropdown active"> Lessons
+    <li class="active lesson"> for loop (current page)
+
+About/about.html:
+  <li class="active"> About this App (current page)
+
+VERIFICATION CHECKS COMPLETED:
+------------------------------
+✓ No .php links remaining - all converted to .html
+✓ All relative paths correct (../ for subdirectories)
+✓ Active classes properly set on current page/section
+✓ All links use correct filenames:
+  - codeVisAlpha.html (not codeVisualiser.php)
+  - arrayVisualiser.html (not arrayVisualiser.php)
+✓ Copyright dates all updated to 2016-2026
+✓ Bootstrap replaced with bootstrap-replacement.css/js
+✓ jQuery upgraded to 3.7.1
+
+ALL NAVIGATION VERIFIED ✓
+=============================================================================
+
+LESSON PAGE LINKS - DETAILED CHECK:
+====================================
+
+All lesson pages checked:
+- ifelse.html, for.html, while.html, dowhile.html, switch.html
+
+LINKS TO CODE VISUALIZER WITH EXAMPLES:
+✓ ../codeVisAlpha.html?example=if
+✓ ../codeVisAlpha.html?example=ifelse
+✓ ../codeVisAlpha.html?example=ifelseifelse
+✓ ../codeVisAlpha.html?example=for
+✓ ../codeVisAlpha.html?example=while
+✓ ../codeVisAlpha.html?example=dowhile1
+✓ ../codeVisAlpha.html?example=dowhile2
+✓ And many more...
+
+LINKS TO ARRAY VISUALIZER:
+✓ ../arrayVisualiser.html (from all lessons)
+
+NAVIGATION LINKS:
+✓ Other lessons (relative paths: ifelse.html, for.html, etc.)
+✓ Videos (../Videos/...)
+✓ Code Visualizer (../codeVisAlpha.html)
+✓ Array Visualizer (../arrayVisualiser.html)
+✓ About (../About/about.html)
+
+VERIFICATION RESULTS:
+✓ No .php links found in any lesson
+✓ All codeVisAlpha.html links correct
+✓ All arrayVisualiser.html links correct
+✓ All relative paths correct (../ for parent directory)
+✓ Example parameters preserved (?example=...)
+✓ Target="_blank" and rel="noopener" properly set for external links
+
+LESSON CONTENT VERIFIED ✓
+=============================================================================
