@@ -144,12 +144,21 @@
         return this.each(function() {
             var $element = $(this);
             var $window = $(window);
+            var $parent = $element.parent();
             var affixed = null;
             var originalPosition = $element.css('position');
             var originalTop = $element.css('top');
-            var originalWidth = null;
-            var originalLeft = null;
+            var originalWidth = $element.outerWidth();
+            var originalLeft = $element.offset().left;
             var elementOffsetTop = $element.offset().top;
+
+            // Create a placeholder to maintain layout when element is fixed
+            var $placeholder = $('<div></div>').css({
+                display: 'none',
+                height: $element.outerHeight(),
+                width: originalWidth
+            });
+            $element.after($placeholder);
 
             function checkPosition() {
                 var scrollTop = $window.scrollTop();
@@ -160,41 +169,49 @@
                     ? settings.offset.bottom()
                     : settings.offset.bottom;
 
-                if (scrollTop > elementOffsetTop - offsetTop && affixed !== 'top') {
-                    // Store original dimensions and position before affixing
-                    if (originalWidth === null) {
-                        originalWidth = $element.outerWidth();
-                        originalLeft = $element.offset().left;
-                    }
+                // Recalculate if not affixed (in case of window resize)
+                if (affixed === null) {
+                    originalWidth = $element.outerWidth();
+                    originalLeft = $element.offset().left;
+                    elementOffsetTop = $element.offset().top;
+                }
 
+                if (scrollTop > elementOffsetTop - offsetTop && affixed !== 'top') {
                     // Affix to top
                     affixed = 'top';
+                    $placeholder.css('display', 'block');
                     $element.css({
                         position: 'fixed',
                         top: offsetTop + 'px',
                         width: originalWidth + 'px',
-                        left: originalLeft + 'px'
+                        left: originalLeft + 'px',
+                        zIndex: 1000
                     }).addClass('affix').removeClass('affix-top affix-bottom');
                 } else if (scrollTop <= elementOffsetTop - offsetTop && affixed !== null) {
                     // Return to normal position
                     affixed = null;
+                    $placeholder.css('display', 'none');
                     $element.css({
                         position: originalPosition,
                         top: originalTop,
                         width: '',
-                        left: ''
+                        left: '',
+                        zIndex: ''
                     }).addClass('affix-top').removeClass('affix affix-bottom');
                 }
             }
 
             // Recalculate dimensions on window resize
             $window.on('resize', function() {
-                if (affixed === 'top') {
-                    affixed = null;
-                    originalWidth = null;
-                    originalLeft = null;
+                if (affixed !== 'top') {
+                    originalWidth = $element.outerWidth();
+                    originalLeft = $element.offset().left;
+                    elementOffsetTop = $element.offset().top;
+                    $placeholder.css({
+                        height: $element.outerHeight(),
+                        width: originalWidth
+                    });
                 }
-                checkPosition();
             });
 
             $window.on('scroll', checkPosition);
