@@ -1,0 +1,36 @@
+FILES TO UPLOAD TO SERVER
+=========================
+
+CRITICAL - Must Upload:
+-----------------------
+✓ All .html files (already uploaded)
+
+Root Directory Files:
+--------------------
+□ bootstrap-replacement.css (modified Feb 6)
+□ bootstrap-replacement.js (modified Feb 6)
+□ glyphicons-replacement.css (modified Feb 6)
+□ tabs-replacement.js (modified Feb 6)
+□ jquery-3.7.1.min.js (upgraded)
+□ jquery-migrate-3.4.1.min.js (added)
+
+Optional - If Not Already on Server:
+------------------------------------
+□ dest/concatCodeVis.js (contains execution logic)
+□ Entire fonts/ directory (glyphicons fonts)
+□ Entire bootstrap-3.3.7/ directory (if not present)
+□ Entire jquery-ui-1.12.0/ directory (if not present)
+
+NOT Needed:
+-----------
+✗ Video files (.mov, .mp4) - upload separately if needed
+✗ .git directory
+✗ .bak files
+
+Quick Test After Upload:
+-------------------------
+1. Visit codeVisAlpha.html
+2. Click Step button - check if condition boxes turn red/green
+3. Try different examples from navigation menu
+4. Check arrayVisualiser.html works
+5. Verify browser console has no 404 errors
