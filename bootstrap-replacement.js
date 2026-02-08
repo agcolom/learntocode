@@ -132,6 +132,7 @@
     };
 
     // Affix - makes elements stick to viewport when scrolling
+    // Simple implementation that just toggles classes - CSS handles positioning
     $.fn.affix = function(options) {
         var defaults = {
             offset: {
@@ -145,85 +146,34 @@
             var $element = $(this);
             var $window = $(window);
             var affixed = null;
-            var originalPosition = $element.css('position');
-            var originalTop = $element.css('top');
-            var originalRight = $element.css('right');
-            var originalWidth = $element.outerWidth();
             var elementOffsetTop = $element.offset().top;
-
-            // Calculate right offset from viewport edge
-            var windowWidth = $window.width();
-            var elementLeft = $element.offset().left;
-            var elementWidth = $element.outerWidth();
-            var rightOffset = windowWidth - (elementLeft + elementWidth);
-
-            // Create a placeholder to maintain layout when element is fixed
-            var $placeholder = $('<div></div>').css({
-                display: 'none',
-                height: $element.outerHeight(),
-                width: originalWidth
-            }).addClass($element.attr('class'));
-            $element.after($placeholder);
 
             function checkPosition() {
                 var scrollTop = $window.scrollTop();
                 var offsetTop = typeof settings.offset.top === 'function'
                     ? settings.offset.top()
                     : settings.offset.top;
-                var offsetBottom = typeof settings.offset.bottom === 'function'
-                    ? settings.offset.bottom()
-                    : settings.offset.bottom;
 
-                // Recalculate if not affixed (in case of window resize)
+                // Recalculate offset if not affixed
                 if (affixed === null) {
-                    originalWidth = $element.outerWidth();
                     elementOffsetTop = $element.offset().top;
-                    windowWidth = $window.width();
-                    elementLeft = $element.offset().left;
-                    elementWidth = $element.outerWidth();
-                    rightOffset = windowWidth - (elementLeft + elementWidth);
                 }
 
                 if (scrollTop > elementOffsetTop - offsetTop && affixed !== 'top') {
                     // Affix to top
                     affixed = 'top';
-                    $placeholder.css('display', 'block');
-                    $element.css({
-                        position: 'fixed',
-                        top: offsetTop + 'px',
-                        width: originalWidth + 'px',
-                        right: rightOffset + 'px',
-                        left: 'auto',
-                        zIndex: 1000
-                    }).addClass('affix').removeClass('affix-top affix-bottom');
+                    $element.removeClass('affix-top affix-bottom').addClass('affix');
                 } else if (scrollTop <= elementOffsetTop - offsetTop && affixed !== null) {
                     // Return to normal position
                     affixed = null;
-                    $placeholder.css('display', 'none');
-                    $element.css({
-                        position: originalPosition,
-                        top: originalTop,
-                        width: '',
-                        right: originalRight,
-                        left: '',
-                        zIndex: ''
-                    }).addClass('affix-top').removeClass('affix affix-bottom');
+                    $element.removeClass('affix affix-bottom').addClass('affix-top');
                 }
             }
 
-            // Recalculate dimensions on window resize
+            // Reset on resize to recalculate
             $window.on('resize', function() {
-                // Reset affix to recalculate positions
                 if (affixed === 'top') {
-                    $element.css({
-                        position: originalPosition,
-                        top: originalTop,
-                        width: '',
-                        right: originalRight,
-                        left: '',
-                        zIndex: ''
-                    }).removeClass('affix affix-top affix-bottom');
-                    $placeholder.css('display', 'none');
+                    $element.removeClass('affix affix-top affix-bottom');
                     affixed = null;
                 }
                 checkPosition();
@@ -231,7 +181,8 @@
 
             $window.on('scroll', checkPosition);
 
-            // Initial check
+            // Initial state
+            $element.addClass('affix-top');
             checkPosition();
         });
     };
