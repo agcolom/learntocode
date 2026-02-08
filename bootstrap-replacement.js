@@ -76,4 +76,59 @@
         }
     });
 
+    // Scrollspy - highlights navigation based on scroll position
+    $.fn.scrollspy = function(options) {
+        var defaults = {
+            target: '',
+            offset: 0
+        };
+        var settings = $.extend({}, defaults, options);
+
+        if (!settings.target) return this;
+
+        var $target = $(settings.target);
+        var $nav = $target.find('li > a');
+
+        return this.each(function() {
+            var $spy = $(this);
+
+            function process() {
+                var scrollTop = $spy.scrollTop() + settings.offset;
+                var maxScroll = $spy.height();
+                var $active;
+
+                // Find which section is currently in view
+                $nav.each(function() {
+                    var $this = $(this);
+                    var href = $this.attr('href');
+
+                    if (!href || href.charAt(0) !== '#') return;
+
+                    var $section = $(href);
+                    if (!$section.length) return;
+
+                    var top = $section.offset().top;
+                    var bottom = top + $section.outerHeight();
+
+                    if (scrollTop >= top && scrollTop < bottom) {
+                        $active = $this;
+                    }
+                });
+
+                // Update active state
+                $nav.parent().removeClass('active');
+                if ($active) {
+                    $active.parent().addClass('active');
+                }
+            }
+
+            // Run on scroll
+            $spy.on('scroll', process);
+            $(window).on('scroll', process);
+
+            // Run initially
+            process();
+        });
+    };
+
 })(jQuery);
