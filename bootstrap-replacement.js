@@ -147,6 +147,8 @@
             var affixed = null;
             var originalPosition = $element.css('position');
             var originalTop = $element.css('top');
+            var originalWidth = null;
+            var originalLeft = null;
             var elementOffsetTop = $element.offset().top;
 
             function checkPosition() {
@@ -159,24 +161,43 @@
                     : settings.offset.bottom;
 
                 if (scrollTop > elementOffsetTop - offsetTop && affixed !== 'top') {
+                    // Store original dimensions and position before affixing
+                    if (originalWidth === null) {
+                        originalWidth = $element.outerWidth();
+                        originalLeft = $element.offset().left;
+                    }
+
                     // Affix to top
                     affixed = 'top';
                     $element.css({
                         position: 'fixed',
-                        top: offsetTop + 'px'
+                        top: offsetTop + 'px',
+                        width: originalWidth + 'px',
+                        left: originalLeft + 'px'
                     }).addClass('affix').removeClass('affix-top affix-bottom');
                 } else if (scrollTop <= elementOffsetTop - offsetTop && affixed !== null) {
                     // Return to normal position
                     affixed = null;
                     $element.css({
                         position: originalPosition,
-                        top: originalTop
+                        top: originalTop,
+                        width: '',
+                        left: ''
                     }).addClass('affix-top').removeClass('affix affix-bottom');
                 }
             }
 
+            // Recalculate dimensions on window resize
+            $window.on('resize', function() {
+                if (affixed === 'top') {
+                    affixed = null;
+                    originalWidth = null;
+                    originalLeft = null;
+                }
+                checkPosition();
+            });
+
             $window.on('scroll', checkPosition);
-            $window.on('resize', checkPosition);
 
             // Initial check
             checkPosition();
