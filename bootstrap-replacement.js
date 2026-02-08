@@ -144,20 +144,25 @@
         return this.each(function() {
             var $element = $(this);
             var $window = $(window);
-            var $parent = $element.parent();
             var affixed = null;
             var originalPosition = $element.css('position');
             var originalTop = $element.css('top');
+            var originalRight = $element.css('right');
             var originalWidth = $element.outerWidth();
-            var originalLeft = $element.offset().left;
             var elementOffsetTop = $element.offset().top;
+
+            // Calculate right offset from viewport edge
+            var windowWidth = $window.width();
+            var elementLeft = $element.offset().left;
+            var elementWidth = $element.outerWidth();
+            var rightOffset = windowWidth - (elementLeft + elementWidth);
 
             // Create a placeholder to maintain layout when element is fixed
             var $placeholder = $('<div></div>').css({
                 display: 'none',
                 height: $element.outerHeight(),
                 width: originalWidth
-            });
+            }).addClass($element.attr('class'));
             $element.after($placeholder);
 
             function checkPosition() {
@@ -172,8 +177,11 @@
                 // Recalculate if not affixed (in case of window resize)
                 if (affixed === null) {
                     originalWidth = $element.outerWidth();
-                    originalLeft = $element.offset().left;
                     elementOffsetTop = $element.offset().top;
+                    windowWidth = $window.width();
+                    elementLeft = $element.offset().left;
+                    elementWidth = $element.outerWidth();
+                    rightOffset = windowWidth - (elementLeft + elementWidth);
                 }
 
                 if (scrollTop > elementOffsetTop - offsetTop && affixed !== 'top') {
@@ -184,7 +192,8 @@
                         position: 'fixed',
                         top: offsetTop + 'px',
                         width: originalWidth + 'px',
-                        left: originalLeft + 'px',
+                        right: rightOffset + 'px',
+                        left: 'auto',
                         zIndex: 1000
                     }).addClass('affix').removeClass('affix-top affix-bottom');
                 } else if (scrollTop <= elementOffsetTop - offsetTop && affixed !== null) {
@@ -195,6 +204,7 @@
                         position: originalPosition,
                         top: originalTop,
                         width: '',
+                        right: originalRight,
                         left: '',
                         zIndex: ''
                     }).addClass('affix-top').removeClass('affix affix-bottom');
@@ -203,15 +213,20 @@
 
             // Recalculate dimensions on window resize
             $window.on('resize', function() {
-                if (affixed !== 'top') {
-                    originalWidth = $element.outerWidth();
-                    originalLeft = $element.offset().left;
-                    elementOffsetTop = $element.offset().top;
-                    $placeholder.css({
-                        height: $element.outerHeight(),
-                        width: originalWidth
-                    });
+                // Reset affix to recalculate positions
+                if (affixed === 'top') {
+                    $element.css({
+                        position: originalPosition,
+                        top: originalTop,
+                        width: '',
+                        right: originalRight,
+                        left: '',
+                        zIndex: ''
+                    }).removeClass('affix affix-top affix-bottom');
+                    $placeholder.css('display', 'none');
+                    affixed = null;
                 }
+                checkPosition();
             });
 
             $window.on('scroll', checkPosition);
